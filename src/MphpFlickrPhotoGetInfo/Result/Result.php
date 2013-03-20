@@ -1,0 +1,385 @@
+<?php
+/**
+ * Result
+ *
+ * PHP Version  PHP 5.3.10
+ *
+ * @category   MphpFlickrPhotoGetInfo
+ * @package    MphpFlickrPhotoGetInfo
+ * @subpackage MphpFlickrPhotoGetInfo\Result
+ * @author     David White [monkeyphp] <git@monkeyphp.com>
+ */
+namespace MphpFlickrPhotoGetInfo\Result;
+
+/**
+ * Result
+ *
+ * @category   MphpFlickrPhotoGetInfo
+ * @package    MphpFlickrPhotoGetInfo
+ * @subpackage MphpFlickrPhotoGetInfo\Result
+ * @author     David White [monkeyphp] <git@monkeyphp.com>
+ */
+class Result extends \MphpFlickrBase\Result\AbstractResult
+{
+    /**
+     *
+     * @param \MphpFlickrPhotoGetInfo\Adapter\Interfaces\Result\ResultAdapterInterface $adapter
+     *
+     * @return \MphpFlickrPhotoGetInfo\Result\Result
+     */
+    public function setAdapter(\MphpFlickrPhotoGetInfo\Adapter\Interfaces\Result\ResultAdapterInterface $adapter)
+    {
+        return parent::setAdapter($adapter);
+    }
+
+    /**
+     * Return the Id of the Photo
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->getAdapter()->getId();
+    }
+
+    /**
+     * Return the secret of the Photo
+     *
+     * @return string|null
+     */
+    public function getSecret()
+    {
+        return $this->getAdapter()->getSecret();
+    }
+
+    /**
+     * Returnt the server of the Photo
+     *
+     * @return string|null
+     */
+    public function getServer()
+    {
+        return $this->getAdapter()->getServer();
+    }
+
+    /**
+     * Return the farm of the Photo
+     *
+     * @return string|null
+     */
+    public function getFarm()
+    {
+        return $this->getAdapter()->getFarm();
+    }
+
+    /**
+     * Return the date uploaded of the Photo
+     *
+     * @return string|null
+     */
+    public function getDateUploaded()
+    {
+        return $this->getAdapter()->getDateUploaded();
+    }
+
+    /**
+     * Return the is favourite value of the Photo
+     *
+     * @return string|null
+     */
+    public function getIsFavorite()
+    {
+        return $this->getAdapter()->getIsFavorite();
+    }
+
+    /**
+     * Return the license of the Photo
+     *
+     * @return string|null
+     */
+    public function getLicense()
+    {
+        return $this->getAdapter()->getLicense();
+    }
+
+    /**
+     * Return the safety level of the Photo
+     *
+     * @return string|null
+     */
+    public function getSafetyLevel()
+    {
+        return $this->getAdapter()->getSafetyLevel();
+    }
+
+    /**
+     * Return the rotation of the Photo
+     *
+     * @return string|null
+     */
+    public function getRotation()
+    {
+        return $this->getAdapter()->getRotation();
+    }
+
+    /**
+     * Return the original secret of the Photo
+     *
+     * @return string|null
+     */
+    public function getOriginalSecret()
+    {
+        return $this->getAdapter()->getOriginalSecret();
+    }
+
+    /**
+     * Return the original format of the Photo
+     *
+     * @return string|null
+     */
+    public function getOriginalFormat()
+    {
+        return $this->getAdapter()->getOriginalFormat();
+    }
+
+    /**
+     * Return the number of views of the Photo
+     *
+     * @return string|null
+     */
+    public function getViews()
+    {
+        return $this->getAdapter()->getViews();
+    }
+
+    /**
+     * Return the media of the Photo
+     *
+     * @return string|null
+     */
+    public function getMedia()
+    {
+        return $this->getAdapter()->getMedia();
+    }
+
+    /**
+     * Return the NSID of the owner of the Photo
+     *
+     * @return string|null
+     */
+    public function getOwnerNsid()
+    {
+        return $this->getAdapter()->getOwnerNsid();
+    }
+
+    /**
+     * Return the username of the owner of the Photo
+     *
+     * @return string|null
+     */
+    public function getOwnerUsername()
+    {
+        return $this->getAdapter()->getOwnerUsername();
+    }
+
+    /**
+     * Return the realname of the owner of the Photo
+     *
+     * @return string|null
+     */
+    public function getOwnerRealname()
+    {
+        return $this->getAdapter()->getOwnerRealname();
+    }
+
+    /**
+     * Return the location of the owner of the Photo
+     *
+     * @return string|null
+     */
+    public function getOwnerLocation()
+    {
+        return $this->getAdapter()->getOwnerLocation();
+    }
+
+    /**
+     * Return the icon server of the owner of the Photo
+     *
+     * @return string|null
+     */
+    public function getOwnerIconServer()
+    {
+        return $this->getAdapter()->getOwnerIconServer();
+    }
+
+    /**
+     * Return the icon farm of the owner of the Photo
+     *
+     * @return string|null
+     */
+    public function getOwnerIconFarm()
+    {
+        return $this->getAdapter()->getOwnerIconFarm();
+    }
+
+    public function getOwnerPathAlias()
+    {
+        return $this->getAdapter()->getOwnerPathAlias();
+    }
+
+    public function getTitle()
+    {
+        return $this->getAdapter()->getTitle();
+    }
+
+    public function getDescription()
+    {
+        return $this->getAdapter()->getDescription();
+    }
+
+    public function getVisibilityIsPublic()
+    {
+        return $this->getAdapter()->getVisibilityIsPublic();
+    }
+
+    public function getVisibilityIsFriend()
+    {
+        return $this->getAdapter()->getVisibilityIsFriend();
+    }
+
+    public function getVisibilityIsFamily()
+    {
+        return $this->getAdapter()->getVisibilityIsFamily();
+    }
+
+    public function getDatesPosted()
+    {
+        return $this->getAdapter()->getDatesPosted();
+    }
+
+    public function getDatesTaken()
+    {
+        return $this->getAdapter()->getDatesTaken();
+    }
+
+    public function getDatesTakenGranularity()
+    {
+        return $this->getAdapter()->getDatesTakenGranularity();
+    }
+
+    public function getDatesTakenLastUpdate()
+    {
+        return $this->getAdapter()->getDatesTakenLastUpdate();
+    }
+
+    public function getEditabilityCanComment()
+    {
+        return $this->getAdapter()->getEditabilityCanComment();
+    }
+
+    public function getEditabilityCanAddMeta()
+    {
+        return $this->getAdapter()->getEditabilityCanAddMeta();
+    }
+
+    public function getPublicEditabilityCanComment()
+    {
+        return $this->getAdapter()->getPublicEditabilityCanComment();
+    }
+
+    public function getPublicEditabilityCanAddMeta()
+    {
+        return $this->getAdapter()->getPublicEditabilityCanAddMeta();
+    }
+
+    /**
+     * Return the usage can download of the Photo
+     *
+     * @return string|null
+     */
+    public function getUsageCanDownload()
+    {
+        return $this->getAdapter()->getUsageCanDownload();
+    }
+
+    /**
+     * Return the usage can blog of the Photo
+     *
+     * @return string|null
+     */
+    public function getUsageCanBlog()
+    {
+        return $this->getAdapter()->getUsageCanBlog();
+    }
+
+    /**
+     * Return the usage can print of the Photo
+     *
+     * @return string|null
+     */
+    public function getUsageCanPrint()
+    {
+        return $this->getAdapter()->getUsageCanPrint();
+    }
+
+    /**
+     * Return the usage can share of the Photo
+     *
+     * @return string|null
+     */
+    public function getUsageCanShare()
+    {
+        return $this->getAdapter()->getUsageCanShare();
+    }
+
+    /**
+     * Return the number of Comments associated with the Photo
+     *
+     * @return string|null
+     */
+    public function getComments()
+    {
+        return $this->getAdapter()->getComments();
+    }
+
+    /**
+     * Return notes of the Photo
+     *
+     * @return string|null
+     */
+    public function getNotes()
+    {
+        return $this->getAdapter()->getNotes();
+    }
+
+    /**
+     * Return if the people has people of the Photo
+     *
+     * @return string|null
+     */
+    public function getPeopleHasPeople()
+    {
+        return $this->getAdapter()->getPeopleHasPeople();
+    }
+
+    /**
+     * Return a traversable list of Tags of the Photo
+     *
+     * @return \Traversable
+     */
+    public function getTags()
+    {
+        return $this->getAdapter()->getTags();
+    }
+
+    /**
+     * Return a traversable list of the urls of the Photo
+     *
+     * @return \Traversable
+     */
+    public function getUrls()
+    {
+        return $this->getAdapter()->getUrls();
+    }
+    
+}
