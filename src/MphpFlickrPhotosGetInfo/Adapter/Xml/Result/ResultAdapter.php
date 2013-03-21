@@ -1,6 +1,6 @@
 <?php
 /**
- * ResultAdapter
+ * ResultAdapter.php
  *
  * PHP Version  PHP 5.3.10
  *
@@ -21,23 +21,120 @@ namespace MphpFlickrPhotosGetInfo\Adapter\Xml\Result;
  */
 class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAdapter implements \MphpFlickrPhotosGetInfo\Adapter\Interfaces\Result\ResultAdapterInterface
 {
-    const ATTRIBUTE_ID = 'id';
+    const QUERY_ID = '/rsp/photo/@id';
 
-    const ATTRIBUTE_SECRET = 'secret';
+    const QUERY_SECRET = '/rsp/photo/@secret';
 
-    const ATTRIBUTE_SERVER = 'server';
+    protected $serverQuery = '/rsp/photo/@server';
+    
+    protected function getServerQuery()
+    {
+        return $this->serverQuery;
+    }
 
-    const ATTRIBUTE_LICENSE = 'license';
+    
 
-    const ATTRIBUTE_FARM = 'farm';
+    
+    /**
+     * DOMXPath query string used to retrieve the farm value from the 
+     * results
+     * 
+     * @var string
+     */
+    protected $farmQuery = '/rsp/photo/@farm';
+    
+    /**
+     * Return the DOMXPath query string used to retrieve the farm value from
+     * the results
+     * 
+     * @return string
+     */
+    protected function getFarmQuery()
+    {
+        return $this->farmQuery;
+    }
+    
+    /**
+     * DOMXPath query string used to retrieve the date uploaded value from the 
+     * results
+     * 
+     * @var string
+     */
+    protected $dateUploadQuery = '/rsp/photo/@dateuploaded';
+    
+    /**
+     * Return the DOMXPath query string used to retrieve the date uploaded value
+     * from the results
+     * 
+     * @return string
+     */
+    protected function getDateUploadedQuery()
+    {
+        return $this->dateUploadQuery;
+    }
 
-    const ATTRIBUTE_DATE_UPLOADED = 'dateuploaded';
+    /**
+     * DOMXPath query string used to retrieve the is favorite value from the 
+     * results
+     * 
+     * @var string
+     */
+    protected $isFavoriteQuery = '/rsp/photo/@isfavorite';
+    
+    /**
+     * Return the DOMXPath query string used to retrieve the is favorite value
+     * from the results
+     * 
+     * @return string
+     */
+    protected function getIsFavoriteQuery()
+    {
+        return $this->isFavoriteQuery;
+    }
 
-    const ATTRIBUTE_IS_FAVORITE = 'isfavorite';
+    /**
+     * DOMXPath query string used to retrieve the license value from the results
+     * 
+     * @var string
+     */
+    protected $licenseQuery = '/rsp/photo/@license';
+    
+    /**
+     * Return the DOMXPath query string used to retrieve the license value from
+     * the results
+     * 
+     * @return string
+     */
+    protected function getLicenseQuery()
+    {
+        return $this->licenseQuery;
+    }
+    
+    
+    protected $safetyLevelQuery = '/rsp/photo/@safety_level';
+    
+    protected function getSafetyLevelQuery()
+    {
+        return $this->safetyLevelQuery;
+    }
 
-    const ATTRIBUTE_SAFETY_LEVEL = 'safety_level';
-
-    const ATTRIBUTE_ROTATION = 'rotation';
+    /**
+     * Return the DOMXPath query string used to retrieve the rotation value
+     * from the results
+     * 
+     * @return string
+     */
+    protected function getRotationQuery()
+    {
+        return $this->rotationQuery;
+    }
+    
+    /**
+     * DOMXPath query string used to retrieve the rotation value from the results
+     * 
+     * @var string
+     */
+    protected $rotationQuery = '/rsp/photo/@rotation';
 
     const ATTRIBUTE_ORIGINAL_SECRET = 'originalsecret';
 
@@ -83,7 +180,7 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
     public function getId()
     {
         if (! isset($this->id)) {
-            $this->id = ($this->getDomElement()->getAttribute(self::ATTRIBUTE_ID));
+            $this->id = $this->getDomXPath($this->getDomDocument())->query(self::QUERY_ID)->item(0)->value;
         }
         return $this->id;
     }
@@ -96,7 +193,7 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
     public function getSecret()
     {
         if (! isset($this->secret)) {
-            $this->secret = ($this->getDomElement()->getAttribute(self::ATTRIBUTE_SECRET));
+            $this->secret = $this->getDomXPath($this->getDomDocument())->query(self::QUERY_SECRET)->item(0)->value;
         }
         return $this->secret;
     }
@@ -109,7 +206,7 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
     public function getServer()
     {
         if (! isset($this->server)) {
-            $this->server = ($this->getDomElement()->getAttribute(self::ATTRIBUTE_SERVER));
+            $this->server = $this->getDomXPath($this->getDomDocument())->query($this->getServerQuery())->item(0)->value;
         }
         return $this->server;
     }
@@ -122,7 +219,9 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
     public function getFarm()
     {
         if (! isset($this->farm)) {
-            $this->farm = ($this->getDomElement()->getAttribute(self::ATTRIBUTE_FARM));
+            $this->farm = (($nodeList = $this->getDomXPath($this->getDomDocument())->query($this->getFarmQuery())) && $nodeList->length)
+                ? $nodeList->item(0)->value
+                : null;
         }
         return $this->farm;
     }
@@ -136,7 +235,9 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
     public function getDateUploaded()
     {
         if (! isset($this->dateUploaded)) {
-            $this->dateUploaded = ($this->getDomElement()->getAttribute(self::ATTRIBUTE_DATE_UPLOADED));
+            $this->dateUploaded = (($nodeList = $this->getDomXPath($this->getDomDocument())->query($this->getDateUploadedQuery())) && $nodeList->length)
+                ? $nodeList->item(0)->value
+                : null;
         }
         return $this->dateUploaded;
     }
@@ -152,7 +253,9 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
     public function getIsFavorite()
     {
         if (! isset($this->isFavorite)) {
-            $this->isFavorite = ($this->getDomElement()->getAttribute(self::ATTRIBUTE_IS_FAVORITE));
+            $this->isFavorite = (($nodeList = $this->getDomXPath($this->getDomDocument())->query($this->getIsFavoriteQuery())) && $nodeList->length)
+                ? $nodeList->item(0)->value
+                : null;
         }
         return $this->isFavorite;
     }
@@ -165,7 +268,9 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
     public function getLicense()
     {
         if (! isset($this->license)) {
-            $this->license = ($this->getDomElement()->getAttribute(self::ATTRIBUTE_LICENSE));
+            $this->license = (($nodeList = $this->getDomXPath($this->getDomDocument())->query($this->getLicenseQuery())) && $nodeList->length)
+                ? $nodeList->item(0)->value
+                : null;
         }
         return $this->license;
     }
@@ -178,7 +283,9 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
     public function getSafetyLevel()
     {
         if (! isset($this->safetyLevel)) {
-            $this->safetyLevel = ($this->getDomElement()->getAttribute(self::ATTRIBUTE_SAFETY_LEVEL));
+            $this->safetyLevel = (($nodeList = $this->getDomXPath($this->getDomDocument())->query($this->getSafetyLevelQuery())) && $nodeList->length)
+                ? $nodeList->item(0)->value
+                : null;
         }
         return $this->safetyLevel;
     }
@@ -195,7 +302,9 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
     public function getRotation()
     {
         if (! isset($this->rotation)) {
-            $this->rotation = ($this->getDomElement()->getAttribute(self::ATTRIBUTE_ROTATION));
+            $this->rotation = (($nodeList = $this->getDomXPath($this->getDomDocument())->query($this->getRotationQuery())) && $nodeList->length)
+                ? $nodeList->item(0)->value
+                : null;
         }
         return $this->rotation;
     }
