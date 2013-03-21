@@ -4,19 +4,19 @@
  *
  * PHP Version  PHP 5.3.10
  *
- * @category   MphpFlickrPhotoGetInfo
- * @package    MphpFlickrPhotoGetInfo
- * @subpackage MphpFlickrPhotoGetInfo\Adapter\Interfaces\Result
+ * @category   MphpFlickrPhotosGetInfo
+ * @package    MphpFlickrPhotosGetInfo
+ * @subpackage MphpFlickrPhotosGetInfo\Adapter\Interfaces\Result
  * @author     David White [monkeyphp] <git@monkeyphp.com>
  */
-namespace MphpFlickrPhotoGetInfo\Adapter\Interfaces\Result;
+namespace MphpFlickrPhotosGetInfo\Adapter\Interfaces\Result;
 
 /**
  * ResultAdapterInterface
  *
- * @category   MphpFlickrPhotoGetInfo
- * @package    MphpFlickrPhotoGetInfo
- * @subpackage MphpFlickrPhotoGetInfo\Adapter\Interfaces\Result
+ * @category   MphpFlickrPhotosGetInfo
+ * @package    MphpFlickrPhotosGetInfo
+ * @subpackage MphpFlickrPhotosGetInfo\Adapter\Interfaces\Result
  * @author     David White [monkeyphp] <git@monkeyphp.com>
  */
 interface ResultAdapterInterface

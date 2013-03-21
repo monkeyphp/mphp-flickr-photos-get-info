@@ -4,30 +4,30 @@
  *
  * PHP Version  PHP 5.3.10
  *
- * @category   MphpFlickrPhotoGetInfo
- * @package    MphpFlickrPhotoGetInfo
- * @subpackage MphpFlickrPhotoGetInfo\Result
+ * @category   MphpFlickrPhotosGetInfo
+ * @package    MphpFlickrPhotosGetInfo
+ * @subpackage MphpFlickrPhotosGetInfo\Result
  * @author     David White [monkeyphp] <git@monkeyphp.com>
  */
-namespace MphpFlickrPhotoGetInfo\Result;
+namespace MphpFlickrPhotosGetInfo\Result;
 
 /**
  * Result
  *
- * @category   MphpFlickrPhotoGetInfo
- * @package    MphpFlickrPhotoGetInfo
- * @subpackage MphpFlickrPhotoGetInfo\Result
+ * @category   MphpFlickrPhotosGetInfo
+ * @package    MphpFlickrPhotosGetInfo
+ * @subpackage MphpFlickrPhotosGetInfo\Result
  * @author     David White [monkeyphp] <git@monkeyphp.com>
  */
 class Result extends \MphpFlickrBase\Result\AbstractResult
 {
     /**
      *
-     * @param \MphpFlickrPhotoGetInfo\Adapter\Interfaces\Result\ResultAdapterInterface $adapter
+     * @param \MphpFlickrPhotosGetInfo\Adapter\Interfaces\Result\ResultAdapterInterface $adapter
      *
-     * @return \MphpFlickrPhotoGetInfo\Result\Result
+     * @return \MphpFlickrPhotosGetInfo\Result\Result
      */
-    public function setAdapter(\MphpFlickrPhotoGetInfo\Adapter\Interfaces\Result\ResultAdapterInterface $adapter)
+    public function setAdapter(\MphpFlickrPhotosGetInfo\Adapter\Interfaces\Result\ResultAdapterInterface $adapter)
     {
         return parent::setAdapter($adapter);
     }

@@ -4,22 +4,22 @@
  *
  * PHP Version  PHP 5.3.10
  *
- * @category   MphpFlickrPhotoGetInfo
- * @package    MphpFlickrPhotoGetInfo
- * @subpackage MphpFlickrPhotoGetInfo\Adapter\Xml\Result
+ * @category   MphpFlickrPhotosGetInfo
+ * @package    MphpFlickrPhotosGetInfo
+ * @subpackage MphpFlickrPhotosGetInfo\Adapter\Xml\Result
  * @author     David White [monkeyphp] <git@monkeyphp.com>
  */
-namespace MphpFlickrPhotoGetInfo\Adapter\Xml\Result;
+namespace MphpFlickrPhotosGetInfo\Adapter\Xml\Result;
 
 /**
  * ResultAdapter
  *
- * @category   MphpFlickrPhotoGetInfo
- * @package    MphpFlickrPhotoGetInfo
- * @subpackage MphpFlickrPhotoGetInfo\Adapter\Xml\Result
+ * @category   MphpFlickrPhotosGetInfo
+ * @package    MphpFlickrPhotosGetInfo
+ * @subpackage MphpFlickrPhotosGetInfo\Adapter\Xml\Result
  * @author     David White [monkeyphp] <git@monkeyphp.com>
  */
-class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAdapter implements \MphpFlickrPhotoGetInfo\Adapter\Interfaces\Result\ResultAdapterInterface
+class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAdapter implements \MphpFlickrPhotosGetInfo\Adapter\Interfaces\Result\ResultAdapterInterface
 {
     const ATTRIBUTE_ID = 'id';
 

@@ -4,19 +4,19 @@
  *
  * PHP Version  PHP 5.3.10
  *
- * @category   MphpFlickrPhotoGetInfo
- * @package    MphpFlickrPhotoGetInfo
- * @subpackage MphpFlickrPhotoGetInfo\Connector
+ * @category   MphpFlickrPhotosGetInfo
+ * @package    MphpFlickrPhotosGetInfo
+ * @subpackage MphpFlickrPhotosGetInfo\Connector
  * @author     David White [monkeyphp] <git@monkeyphp.com>
  */
-namespace MphpFlickrPhotoGetInfo\Connector;
+namespace MphpFlickrPhotosGetInfo\Connector;
 
 /**
  * Description of Connector
  *
- * @category   MphpFlickrPhotoGetInfo
- * @package    MphpFlickrPhotoGetInfo
- * @subpackage MphpFlickrPhotoGetInfo\Connector
+ * @category   MphpFlickrPhotosGetInfo
+ * @package    MphpFlickrPhotosGetInfo
+ * @subpackage MphpFlickrPhotosGetInfo\Connector
  * @author     David White [monkeyphp] <git@monkeyphp.com>
  */
 class Connector extends \MphpFlickrBase\Connector\AbstractConnector
@@ -33,7 +33,7 @@ class Connector extends \MphpFlickrBase\Connector\AbstractConnector
      *
      * @var string
      */
-    protected $resultAdapterClass = 'MphpFlickrPhotoGetInfo\Adapter\Result\Result';
+    protected $resultAdapterClass = 'MphpFlickrPhotosGetInfo\Adapter\Result\Result';
 
     /**
      *

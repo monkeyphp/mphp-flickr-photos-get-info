@@ -1,8 +1,8 @@
 {
-    "name": "monkeyphp/mphp-flickr-photo-get-info",
+    "name": "monkeyphp/mphp-flickr-photos-get-info",
     "description": "Package for accessing the Flickr flickr.photos.getInfo api",
     "type": "library",
-    "homepage": "https://github.com/monkeyphp/mphp-flickr-photo-get-info",
+    "homepage": "https://github.com/monkeyphp/mphp-flickr-photos-get-info",
     "license": "MIT",
     "keywords": [
         "Flickr",
@@ -18,16 +18,31 @@
     "support": {
         "email": "git@monkeyphp.com"
     },
+    "repositories":[
+        {
+            "type": "package", 
+            "package": {
+                "name":"monkeyphp/mphp-flickr-base",
+                "version":"1.0.0",
+                "source": {
+                    "url": "https://github.com/monkeyphp/mphp-flickr-base",
+                    "type": "git",
+                    "reference": "master"
+                }
+            }
+        }
+    ]
     "require": {
         "php": ">=5.3.0",
-        "monkeyphp/mphp-flickr-base": "*"
+        "monkeyphp/mphp-flickr-base": "1.0.0",
+        "zendframework/zend-http": "2.1.2"
     },
     "require-dev": {
         "phpunit/phpunit": "3.7.14"
     },
     "autoload": {
         "psr-0": {
-            "MphpFlickrPhotoGetInfo": "src/"
+            "MphpFlickrPhotosGetInfo": "src/"
         }
     }
 }
