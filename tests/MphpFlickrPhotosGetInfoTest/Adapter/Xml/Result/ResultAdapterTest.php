@@ -150,6 +150,82 @@ class ResultAdapterTest extends PHPUnit_Framework_TestCase
         $this->assertSame('Utchat', $resultAdapter->getOwnerUsername());
     }
     
+    public function testGetOwnerRealname()
+    {
+        $results = $this->results;
+        $parameters = array('photo_id' => '8558949624');
+        $resultAdapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($results, $parameters);
+        
+        $this->assertSame('Leslie  Lazenby', $resultAdapter->getOwnerRealname());
+    }
+    
+    public function testGetOwnerLocation()
+    {
+        $results = $this->results;
+        $parameters = array('photo_id' => '8558949624');
+        $resultAdapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($results, $parameters);
+        
+        $this->assertSame('Findlay, OH, USA', $resultAdapter->getOwnerLocation());
+    }
+    
+    public function testGetOwnerIconServer()
+    {
+        $results = $this->results;
+        $parameters = array('photo_id' => '8558949624');
+        $resultAdapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($results, $parameters);
+        
+        $this->assertSame('7277', $resultAdapter->getOwnerIconServer());
+    }
+    
+    public function testGetOwnerIconFarm()
+    {
+        $results = $this->results;
+        $parameters = array('photo_id' => '8558949624');
+        $resultAdapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($results, $parameters);
+        
+        $this->assertSame('8', $resultAdapter->getOwnerIconFarm());
+    }
+    
+    public function testGetOwnerPathAlias()
+    {
+        $results = $this->results;
+        $parameters = array('photo_id' => '8558949624');
+        $resultAdapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($results, $parameters);
+        
+        $this->assertSame('', $resultAdapter->getOwnerPathAlias());
+    }
+    
+    public function testGetTitle()
+    {
+        $results = $this->results;
+        $parameters = array('photo_id' => '8558949624');
+        $resultAdapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($results, $parameters);
+        
+        $this->assertSame('PENTAX Metalica', $resultAdapter->getTitle());
+    }
+    
+    public function testGetDescription()
+    {
+        $results = $this->results;
+        $parameters = array('photo_id' => '8558949624');
+        $resultAdapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($results, $parameters);
+        
+        $this->assertSame('In 1960 Asahi Optical introduced the SLR prototype which they called the Metallica.', $resultAdapter->getDescription());
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -158,11 +234,7 @@ class ResultAdapterTest extends PHPUnit_Framework_TestCase
   <photo id="8558949624" secret="5d509a7677" server="8530" farm="9" dateuploaded="1363313061" isfavorite="0" license="0" safety_level="0" rotation="0" originalsecret="43df79aefd" originalformat="jpg" views="25" media="photo">
     <owner nsid="65448995@N05" username="Utchat" realname="Leslie  Lazenby" location="Findlay, OH, USA" iconserver="7277" iconfarm="8" path_alias="" />
     <title>PENTAX Metalica</title>
-    <description>In 1960 Asahi Optical introduced the SLR prototype which they called the Metallica. The Metallica gave a glimpse into the future direction of Pentax cameras; it featured a prototype bayonet lens mount, a vertical-traveling, metallic Copal-type focal plane shutter (from which the camera drew its name), and an already obsolescent coupled selenium light meter. The light meter was not TTL, but instead featured the typical large selenium mini-lens pattern on the front of the pentaprism.  While Asahi Optical didn\'t put the Metallica into production, the concepts of a bayonet lens mount and a metal focal plane shutter were already being discussed internally at the company.
-
-In 1966 Asahi Optical showed a revised prototype of the Metallica named the Metallica II. Gone was the cumbersome selenium light meter, replaced with a now standard internal CdS meter.
-
-&lt;a href=&quot;http://en.wikipedia.org/wiki/Pentax_cameras&quot; rel=&quot;nofollow&quot;&gt;en.wikipedia.org/wiki/Pentax_cameras&lt;/a&gt;</description>
+    <description>In 1960 Asahi Optical introduced the SLR prototype which they called the Metallica.</description>
     <visibility ispublic="1" isfriend="0" isfamily="0" />
     <dates posted="1363313061" taken="2013-03-12 15:22:43" takengranularity="0" lastupdate="1363315188" />
     <editability cancomment="0" canaddmeta="0" />
