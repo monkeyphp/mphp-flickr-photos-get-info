@@ -101,7 +101,7 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
      * 
      * @var string
      */
-    protected $dateUploadQuery = '/rsp/photo/@dateuploaded';
+    protected $dateUploadedQuery = '/rsp/photo/@dateuploaded';
     
     /**
      * Return the DOMXPath query string used to retrieve the date uploaded value
@@ -111,7 +111,7 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
      */
     protected function getDateUploadedQuery()
     {
-        return $this->dateUploadQuery;
+        return $this->dateUploadedQuery;
     }
 
     /**
@@ -239,19 +239,58 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
     
     
 
-    const QUERY_OWNER_REALNAME = '/photo/owner/@realname';
+    protected $ownerRealnameQuery = '/rsp/photo/owner/@realname';
+    
+    protected function getOwnerRealnameQuery()
+    {
+        return $this->ownerRealnameQuery;
+    }
 
-    const QUERY_OWNDER_LOCATION = '/photo/owner/@location';
+    protected $ownerLocationQuery = '/rsp/photo/owner/@location';
+    
+    protected function getOwnerLocationQuery()
+    {
+        return $this->ownerLocationQuery;
+    }
+    
 
-    const QUERY_OWNDER_ICONSERVER = '/photo/owner/@iconserver';
+    protected function getOwnerIconServerQuery()
+    {
+        return $this->ownerIconServerQuery;
+    }
+    
+    protected $ownerIconServerQuery = '/rsp/photo/owner/@iconserver';
 
-    const QUERY_OWNDER_ICONFARM = '/photo/owner/@iconfarm';
+    
+    protected function getOwnerIconFarmQuery()
+    {
+        return $this->ownerIconFarmQuery;
+    }
+    
+    protected $ownerIconFarmQuery = '/rsp/photo/owner/@iconfarm';
 
-    const QUERY_OWNDER_PATH_ALIAS = '/photo/owner/@path_alias';
+    protected $ownerPathAliasQuery = '/rsp/photo/owner/@path_alias';
+    
+    protected function getOwnerPathAliasQuery()
+    {
+        return $this->ownerPathAliasQuery;
+    }
 
-    const QUERY_TITLE = '/photo/title';
+    protected $titleQuery = '/rsp/photo/title';
+    
+    
 
-    const QUERY_DESCRIPTION = '//description';
+    public function getTitleQuery() 
+    {
+        return $this->titleQuery;
+    }
+
+    protected function getDescriptionQuery()
+    {
+        return $this->descriptionQuery;
+    }
+    
+    protected $descriptionQuery = '/rsp/photo/description';
 
     const QUERY_VISIBILITY_IS_PUBLIC = '/photo/visibility/@ispublic';
 
@@ -456,9 +495,6 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
         return $this->ownerUsername;
     }
     
-    
-    
-    
     /**
      * Return the owner realname property from the results
      * 
@@ -467,7 +503,9 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
     public function getOwnerRealname()
     {
         if (! isset($this->ownerRealname)) {
-            $this->ownerRealname = $this->getDomXPath($this->getDomDocument())->query(self::QUERY_OWNER_REALNAME)->item(0)->value;
+            $this->ownerRealname = (($nodeList = $this->getDomXPath($this->getDomDocument())->query($this->getOwnerRealnameQuery())) && $nodeList->length)
+                ? $nodeList->item(0)->value
+                : null;
         }
         return $this->ownerRealname;
     }
@@ -479,15 +517,22 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
      */
     public function getOwnerLocation()
     {
-        if (! isset($this->ownerRealLocation)) {
-            $this->ownerLocation = $this->getDomXPath($this->getDomDocument())->query(self::QUERY_OWNER_LOCATION)->item(0)->value;
+        if (! isset($this->ownerLocation)) {
+            $this->ownerLocation = (($nodeList = $this->getDomXPath($this->getDomDocument())->query($this->getOwnerLocationQuery())) && $nodeList->length)
+                ? $nodeList->item(0)->value
+                : null;
         }
         return $this->ownerLocation;
     }
     
     public function getOwnerIconServer()
     {
-
+        if (! isset($this->ownerIconServer)) {
+            $this->ownerIconServer = (($nodeList = $this->getDomXPath($this->getDomDocument())->query($this->getOwnerIconServerQuery())) && $nodeList->length)
+                ? $nodeList->item(0)->value
+                : null;
+        }
+        return $this->ownerIconServer;
     }
     
     /**
@@ -498,7 +543,9 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
     public function getOwnerIconFarm()
     {
         if (! isset($this->ownerIconFarm)) {
-            $this->ownerIconFarm = $this->getDomXPath($this->getDomDocument())->query(self::QUERY_OWNER_ICONFARM)->item(0)->value;
+            $this->ownerIconFarm = (($nodeList = $this->getDomXPath($this->getDomDocument())->query($this->getOwnerIconFarmQuery())) && $nodeList->length)
+                ? $nodeList->item(0)->value
+                : null;
         }
         return $this->ownerIconFarm;
     }
@@ -510,7 +557,12 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
      */
     public function getOwnerPathAlias()
     {
-
+        if (! isset($this->ownerPathAlias)) {
+            $this->ownerPathAlias = (($nodeList = $this->getDomXPath($this->getDomDocument())->query($this->getOwnerPathAliasQuery())) && $nodeList->length)
+                ? $nodeList->item(0)->value
+                : null;
+        }
+        return $this->ownerPathAlias;
     }
 
     /**
@@ -520,7 +572,12 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
      */
     public function getTitle()
     {
-
+        if (! isset($this->title)) {
+            $this->title = (($nodeList = $this->getDomXPath($this->getDomDocument())->query($this->getTitleQuery())) && $nodeList->length)
+                ? $nodeList->item(0)->nodeValue
+                : null;
+        }
+        return $this->title;
     }
 
     /**
@@ -531,7 +588,7 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
     public function getDescription()
     {
         if (! isset($this->description)) {
-            $this->description = (($nodeList = $this->getXPath($this->getDomElement())->query(self::QUERY_DESCRIPTION, $this->getDomElement())) && $nodeList->length)
+            $this->description = (($nodeList = $this->getDomXPath($this->getDomDocument())->query($this->getDescriptionQuery())) && $nodeList->length)
                 ? $nodeList->item(0)->nodeValue
                 : null;
         }
