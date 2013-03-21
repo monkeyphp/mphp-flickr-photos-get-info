@@ -1,8 +1,8 @@
 {
-    "name": "vendor/mphp-flickr-photo-get-info",
+    "name": "monkeyphp/mphp-flickr-photo-get-info",
     "description": "Package for accessing the Flickr flickr.photos.getInfo api",
     "type": "library",
-    "homepage": "https://github.com/monkeyphp/mphp-flickr-photo-search",
+    "homepage": "https://github.com/monkeyphp/mphp-flickr-photo-get-info",
     "license": "MIT",
     "keywords": [
         "Flickr",
