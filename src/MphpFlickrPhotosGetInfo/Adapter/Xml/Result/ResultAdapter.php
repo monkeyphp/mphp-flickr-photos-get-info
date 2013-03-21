@@ -21,20 +21,61 @@ namespace MphpFlickrPhotosGetInfo\Adapter\Xml\Result;
  */
 class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAdapter implements \MphpFlickrPhotosGetInfo\Adapter\Interfaces\Result\ResultAdapterInterface
 {
-    const QUERY_ID = '/rsp/photo/@id';
+    
+    /**
+     * DOMXPath query string used to retrieve the id value from the results
+     * 
+     * @var string
+     */
+    protected $idQuery = '/rsp/photo/@id';
+    
+    /**
+     * Return the DOMXPath query string used to retrieve the id value from the 
+     * results
+     * 
+     * @return string
+     */
+    protected function getIdQuery()
+    {
+        return $this->idQuery;
+    }
+    
+    /**
+     * DOMXPath query string used to retrieve the secret value from the results
+     * 
+     * @var string
+     */
+    protected $secretQuery = '/rsp/photo/@secret';
 
-    const QUERY_SECRET = '/rsp/photo/@secret';
-
+    /**
+     * Return the DOMXPath query string used to retrieve the secret value from
+     * the results
+     * 
+     * @return string
+     */
+    protected function getSecretQuery()
+    {
+        return $this->secreteQuery;
+    }
+    
+    /**
+     * DOMXPath query string used to retrieve the server value from the results
+     * 
+     * @var string
+     */
     protected $serverQuery = '/rsp/photo/@server';
     
+    /**
+     * Return the DOMXPath query string used to retrieve the server value
+     * from the results
+     * 
+     * @return string
+     */
     protected function getServerQuery()
     {
         return $this->serverQuery;
     }
 
-    
-
-    
     /**
      * DOMXPath query string used to retrieve the farm value from the 
      * results
@@ -110,9 +151,18 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
         return $this->licenseQuery;
     }
     
-    
+    /**
+     * DOMXPath query string used to retrieve the safety level from the results
+     * 
+     * @var string
+     */
     protected $safetyLevelQuery = '/rsp/photo/@safety_level';
     
+    /**
+     * Return the DOMXPath query string used to retrieve the safety level value
+     * 
+     * @return string
+     */
     protected function getSafetyLevelQuery()
     {
         return $this->safetyLevelQuery;
@@ -136,6 +186,11 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
      */
     protected $rotationQuery = '/rsp/photo/@rotation';
 
+    
+    
+    
+    
+    
     const ATTRIBUTE_ORIGINAL_SECRET = 'originalsecret';
 
     const ATTRIBUTE_ORIGINAL_FORMAT = 'originalformat';
@@ -180,7 +235,9 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
     public function getId()
     {
         if (! isset($this->id)) {
-            $this->id = $this->getDomXPath($this->getDomDocument())->query(self::QUERY_ID)->item(0)->value;
+            $this->id = (($nodeList = $this->getDomXPath($this->getDomDocument())->query($this->getIdQuery())) && $nodeList->length)
+                ? $nodeList->item(0)->value
+                : null;
         }
         return $this->id;
     }
