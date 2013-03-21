@@ -23,212 +23,270 @@ use PHPUnit_Framework_TestCase;
  */
 class ResultAdapterTest extends PHPUnit_Framework_TestCase
 {
- 
+
     public function test__construct()
     {
         $results = $this->results;
         $parameters = array('photo_id' => '8558949624');
         $resultAdapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($results, $parameters);
-        
+
         $this->assertInstanceOf('MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter', $resultAdapter);
     }
-    
+
     public function testGetId()
     {
         $results = $this->results;
         $parameters = array('photo_id' => '8558949624');
         $resultAdapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($results, $parameters);
-        
+
         $this->assertSame('8558949624', $resultAdapter->getId());
     }
-    
+
     public function testGetSecret()
     {
         $results = $this->results;
         $parameters = array('photo_id' => '8558949624');
         $resultAdapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($results, $parameters);
-        
+
         $this->assertSame('5d509a7677', $resultAdapter->getSecret());
     }
-    
+
     public function testGetServer()
     {
         $results = $this->results;
         $parameters = array('photo_id' => '8558949624');
         $resultAdapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($results, $parameters);
-        
+
         $this->assertSame('8530', $resultAdapter->getServer());
     }
-    
+
     public function testGetFarm()
     {
         $results = $this->results;
         $parameters = array('photo_id' => '8558949624');
         $resultAdapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($results, $parameters);
-        
+
         $this->assertSame('9', $resultAdapter->getFarm());
     }
-    
+
     public function testGetDateUploaded()
     {
         $results = $this->results;
         $parameters = array('photo_id' => '8558949624');
         $resultAdapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($results, $parameters);
-        
+
         $this->assertSame('1363313061', $resultAdapter->getDateUploaded());
     }
-    
+
     public function testGetIsFavorite()
     {
         $results = $this->results;
         $parameters = array('photo_id' => '8558949624');
         $resultAdapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($results, $parameters);
-        
+
         $this->assertSame('0', $resultAdapter->getIsFavorite());
     }
-    
+
     public function testGetLicense()
     {
         $results = $this->results;
         $parameters = array('photo_id' => '8558949624');
         $resultAdapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($results, $parameters);
-        
+
         $this->assertSame('0', $resultAdapter->getLicense());
     }
-    
+
     public function testGetSafetyLevel()
     {
         $results = $this->results;
         $parameters = array('photo_id' => '8558949624');
         $resultAdapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($results, $parameters);
-        
+
         $this->assertSame('0', $resultAdapter->getSafetyLevel());
     }
-    
+
     public function testGetRotation()
     {
         $results = $this->results;
         $parameters = array('photo_id' => '8558949624');
         $resultAdapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($results, $parameters);
-        
+
         $this->assertSame('0', $resultAdapter->getRotation());
     }
-    
+
     public function testGetOriginalSecret()
     {
         $results = $this->results;
         $parameters = array('photo_id' => '8558949624');
         $resultAdapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($results, $parameters);
-        
+
         $this->assertSame('43df79aefd', $resultAdapter->getOriginalSecret());
     }
-    
+
     public function testGetOriginalFormat()
     {
         $results = $this->results;
         $parameters = array('photo_id' => '8558949624');
         $resultAdapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($results, $parameters);
-        
+
         $this->assertSame('jpg', $resultAdapter->getOriginalFormat());
     }
-    
+
     public function testGetOwnerNsid()
     {
         $results = $this->results;
         $parameters = array('photo_id' => '8558949624');
         $resultAdapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($results, $parameters);
-        
+
         $this->assertSame('65448995@N05', $resultAdapter->getOwnerNsid());
     }
-    
+
     public function testGetOwnerUsername()
     {
         $results = $this->results;
         $parameters = array('photo_id' => '8558949624');
         $resultAdapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($results, $parameters);
-        
+
         $this->assertSame('Utchat', $resultAdapter->getOwnerUsername());
     }
-    
+
     public function testGetOwnerRealname()
     {
         $results = $this->results;
         $parameters = array('photo_id' => '8558949624');
         $resultAdapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($results, $parameters);
-        
+
         $this->assertSame('Leslie  Lazenby', $resultAdapter->getOwnerRealname());
     }
-    
+
     public function testGetOwnerLocation()
     {
         $results = $this->results;
         $parameters = array('photo_id' => '8558949624');
         $resultAdapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($results, $parameters);
-        
+
         $this->assertSame('Findlay, OH, USA', $resultAdapter->getOwnerLocation());
     }
-    
+
     public function testGetOwnerIconServer()
     {
         $results = $this->results;
         $parameters = array('photo_id' => '8558949624');
         $resultAdapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($results, $parameters);
-        
+
         $this->assertSame('7277', $resultAdapter->getOwnerIconServer());
     }
-    
+
     public function testGetOwnerIconFarm()
     {
         $results = $this->results;
         $parameters = array('photo_id' => '8558949624');
         $resultAdapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($results, $parameters);
-        
+
         $this->assertSame('8', $resultAdapter->getOwnerIconFarm());
     }
-    
+
     public function testGetOwnerPathAlias()
     {
         $results = $this->results;
         $parameters = array('photo_id' => '8558949624');
         $resultAdapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($results, $parameters);
-        
+
         $this->assertSame('', $resultAdapter->getOwnerPathAlias());
     }
-    
+
     public function testGetTitle()
     {
         $results = $this->results;
         $parameters = array('photo_id' => '8558949624');
         $resultAdapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($results, $parameters);
-        
+
         $this->assertSame('PENTAX Metalica', $resultAdapter->getTitle());
     }
-    
+
     public function testGetDescription()
     {
         $results = $this->results;
         $parameters = array('photo_id' => '8558949624');
         $resultAdapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($results, $parameters);
-        
+
         $this->assertSame('In 1960 Asahi Optical introduced the SLR prototype which they called the Metallica.', $resultAdapter->getDescription());
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+    public function testGetVisibilityIsPublic()
+    {
+        $results = $this->results;
+        $parameters = array('photo_id' => '8558949624');
+        $resultAdapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($results, $parameters);
+
+        $this->assertSame('1', $resultAdapter->getVisibilityIsPublic());
+    }
+
+    public function testGetVisibilityIsFriend()
+    {
+        $results = $this->results;
+        $parameters = array('photo_id' => '8558949624');
+        $resultAdapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($results, $parameters);
+
+        $this->assertSame('0', $resultAdapter->getVisibilityIsFriend());
+    }
+
+    public function testGetVisibilityIsFamily()
+    {
+        $results = $this->results;
+        $parameters = array('photo_id' => '8558949624');
+        $resultAdapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($results, $parameters);
+
+        $this->assertSame('0', $resultAdapter->getVisibilityIsFamily());
+    }
+
+    public function testGetComments()
+    {
+        $results = $this->results;
+        $parameters = array('photo_id' => '8558949624');
+        $resultAdapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($results, $parameters);
+
+        $this->assertSame('0', $resultAdapter->getComments());
+    }
+
+    public function testGetDatesPosted()
+    {
+        $results = $this->results;
+        $parameters = array('photo_id' => '8558949624');
+        $resultAdapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($results, $parameters);
+
+        $this->assertSame('1363313061', $resultAdapter->getDatesPosted());
+    }
+
+    public function testGetDatesTaken()
+    {
+        $results = $this->results;
+        $parameters = array('photo_id' => '8558949624');
+        $resultAdapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($results, $parameters);
+
+        $this->assertSame('2013-03-12 15:22:43', $resultAdapter->getDatesTaken());
+    }
+
+    public function testGetDatesTakenGranularity()
+    {
+        $results = $this->results;
+        $parameters = array('photo_id' => '8558949624');
+        $resultAdapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($results, $parameters);
+
+        $this->assertSame('0', $resultAdapter->getDatesTakenGranularity());
+    }
+
+    public function testGetDatesTakenLastUpdate()
+    {
+        $results = $this->results;
+        $parameters = array('photo_id' => '8558949624');
+        $resultAdapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($results, $parameters);
+
+        $this->assertSame('1363315188', $resultAdapter->getDatesTakenLastUpdate());
+    }
+
+
+
     protected $results = '<?xml version="1.0" encoding="utf-8" ?>
 <rsp stat="ok">
   <photo id="8558949624" secret="5d509a7677" server="8530" farm="9" dateuploaded="1363313061" isfavorite="0" license="0" safety_level="0" rotation="0" originalsecret="43df79aefd" originalformat="jpg" views="25" media="photo">
