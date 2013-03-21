@@ -114,12 +114,41 @@ class ResultAdapterTest extends PHPUnit_Framework_TestCase
         $this->assertSame('0', $resultAdapter->getRotation());
     }
     
+    public function testGetOriginalSecret()
+    {
+        $results = $this->results;
+        $parameters = array('photo_id' => '8558949624');
+        $resultAdapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($results, $parameters);
+        
+        $this->assertSame('43df79aefd', $resultAdapter->getOriginalSecret());
+    }
     
+    public function testGetOriginalFormat()
+    {
+        $results = $this->results;
+        $parameters = array('photo_id' => '8558949624');
+        $resultAdapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($results, $parameters);
+        
+        $this->assertSame('jpg', $resultAdapter->getOriginalFormat());
+    }
     
+    public function testGetOwnerNsid()
+    {
+        $results = $this->results;
+        $parameters = array('photo_id' => '8558949624');
+        $resultAdapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($results, $parameters);
+        
+        $this->assertSame('65448995@N05', $resultAdapter->getOwnerNsid());
+    }
     
-    
-    
-    
+    public function testGetOwnerUsername()
+    {
+        $results = $this->results;
+        $parameters = array('photo_id' => '8558949624');
+        $resultAdapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($results, $parameters);
+        
+        $this->assertSame('Utchat', $resultAdapter->getOwnerUsername());
+    }
     
     
     

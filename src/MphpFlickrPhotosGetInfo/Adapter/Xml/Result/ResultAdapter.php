@@ -55,7 +55,7 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
      */
     protected function getSecretQuery()
     {
-        return $this->secreteQuery;
+        return $this->secretQuery;
     }
     
     /**
@@ -186,14 +186,32 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
      */
     protected $rotationQuery = '/rsp/photo/@rotation';
 
+    /**
+     * DOMXPath query string used to retrieve the original secret value from
+     * the results
+     * 
+     * @var string
+     */
+    protected $originalSecretQuery = '/rsp/photo/@originalsecret';
     
+    /**
+     * Return the DOMXPath query string used to retrieve the original secret from
+     * the results
+     * 
+     * @return string
+     */
+    protected function getOriginalSecretQuery()
+    {
+        return $this->originalSecretQuery;
+    }
     
-    
-    
-    
-    const ATTRIBUTE_ORIGINAL_SECRET = 'originalsecret';
+    protected $originalFormatQuery = '/rsp/photo/@originalformat';
 
-    const ATTRIBUTE_ORIGINAL_FORMAT = 'originalformat';
+    protected function getOriginalFormatQuery()
+    {
+        return $this->originalFormatQuery;
+    }
+    
 
     const ATTRIBUTE_VIEWS = 'views';
 
@@ -205,9 +223,21 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
 
     const QUERY_DATES_TAKEN_GRANULARITY = 'dates/@takengranularity';
 
-    const QUERY_OWNER_NSID = '/photo/owner/@nsid';
+    protected $ownerNsidQuery = '/rsp/photo/owner/@nsid';
+    
+    protected function getOwnerNsidQuery()
+    {
+        return $this->ownerNsidQuery;
+    }
 
-    const QUERY_OWNER_USERNAME = '/photo/owner/@username';
+    protected $ownerUsernameQuery = '/rsp/photo/owner/@username';
+    
+    protected function getOwnerUsernameQuery()
+    {
+        return $this->ownerUsernameQuery;
+    }
+    
+    
 
     const QUERY_OWNER_REALNAME = '/photo/owner/@realname';
 
@@ -250,7 +280,7 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
     public function getSecret()
     {
         if (! isset($this->secret)) {
-            $this->secret = $this->getDomXPath($this->getDomDocument())->query(self::QUERY_SECRET)->item(0)->value;
+            $this->secret = $this->getDomXPath($this->getDomDocument())->query($this->getSecretQuery())->item(0)->value;
         }
         return $this->secret;
     }
@@ -367,14 +397,16 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
     }
 
     /**
-     * Return the original_secret property from the results
+     * Return the original secret property from the results
      * 
      * @return string|null
      */
     public function getOriginalSecret()
     {
         if (! isset($this->originalSecret)) {
-            $this->originalSecret = ($this->getDomElement()->getAttribute(self::ATTRIBUTE_ORIGINAL_SECRET));
+            $this->originalSecret = (($nodeList = $this->getDomXPath($this->getDomDocument())->query($this->getOriginalSecretQuery())) && $nodeList->length)
+                ? $nodeList->item(0)->value
+                : null;
         }
         return $this->originalSecret;
     }
@@ -387,7 +419,9 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
     public function getOriginalFormat()
     {
         if (! isset($this->originalFormat)) {
-            $this->originalFormat = ($this->getDomElement()->getAttribute(self::ATTRIBUTE_ORIGINAL_FORMAT));
+            $this->originalFormat = (($nodeList = $this->getDomXPath($this->getDomDocument())->query($this->getOriginalFormatQuery())) && $nodeList->length)
+                ? $nodeList->item(0)->value
+                : null;
         }
         return $this->originalFormat;
     }
@@ -400,7 +434,9 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
     public function getOwnerNsid()
     {
         if (! isset($this->ownerNsid)) {
-            $this->ownerNsid = $this->getDomXPath($this->getDomDocument())->query(self::QUERY_OWNER_NSID)->item(0)->value;
+            $this->ownerNsid = (($nodeList = $this->getDomXPath($this->getDomDocument())->query($this->getOwnerNsidQuery())) && $nodeList->length)
+                ? $nodeList->item(0)->value
+                : null;
         }
         return $this->ownerNsid;
     }
@@ -413,10 +449,15 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
     public function getOwnerUsername()
     {
         if (! isset($this->ownerUsername)) {
-            $this->ownerUsername = $this->getDomXPath($this->getDomDocument())->query(self::QUERY_OWNER_USERNAME)->item(0)->value;
+            $this->ownerUsername = (($nodeList = $this->getDomXPath($this->getDomDocument())->query($this->getOwnerUsernameQuery())) && $nodeList->length)
+                ? $nodeList->item(0)->value
+                : null;
         }
         return $this->ownerUsername;
     }
+    
+    
+    
     
     /**
      * Return the owner realname property from the results
