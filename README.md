@@ -1,0 +1,1 @@
+[![Build Status](https://travis-ci.org/monkeyphp/mphp-flickr-photos-get-info.png)](https://travis-ci.org/monkeyphp/mphp-flickr-photos-get-info)
