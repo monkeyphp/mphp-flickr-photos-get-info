@@ -211,12 +211,14 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
      * @var string
      */
     protected $visibilityIsFamilyQuery = '/rsp/photo/visibility/@isfamily';
+
     /**
      * DOMXPath query string used to retrieve the isfriend value from the results
      *
      * @var string
      */
     protected $visibilityIsFriendQuery = '/rsp/photo/visibility/@isfriend';
+
     /**
      * DOMXPath query string used to retrieve the visibility is public value from
      * the results
@@ -240,6 +242,11 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
         return $this->comments;
     }
 
+    /**
+     * Return the DOMXPath query string used to retrieve the comments from the result
+     *
+     * @return string
+     */
     protected function getCommentsQuery()
     {
         return $this->commentsQuery;
@@ -287,11 +294,22 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
         return $this->datesPosted;
     }
 
+    /**
+     * Return the DOMXPath query string used to retrieve the dates posted value from 
+     * the results
+     *
+     * @return string
+     */
     protected function getDatesPostedQuery()
     {
         return $this->datesPostedQuery;
     }
 
+    /**
+     * Return the dates taken value from the results 
+     *
+     * @return string|null
+     */
     public function getDatesTaken()
     {
         if (! isset($this->datesTake)) {
@@ -302,6 +320,11 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
         return $this->datesTaken;
     }
 
+    /**
+     * Return the dates taken granularity value from the results
+     *
+     * @return string|null
+     */
     public function getDatesTakenGranularity()
     {
         if (! isset($this->datesTakenGranularity)) {
@@ -312,11 +335,22 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
         return $this->datesTakenGranularity;
     }
 
+    /**
+     * Return the DOMXPath query string used to retrieve the dates taken granularity value
+     * from the results
+     *
+     * @return string
+     */
     protected function getDatesTakenGranularityQuery()
     {
         return $this->datesTakenGranularityQuery;
     }
 
+    /**
+     * Return the dates taken last update value from the results
+     *
+     * @return string|null
+     */
     public function getDatesTakenLastUpdate()
     {
         if (! isset($this->datesTakenLastUpdate)) {
@@ -327,6 +361,12 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
         return $this->datesTakenLastUpdate;
     }
 
+    /**
+     * Return the DOMXPath query string used to retrueve the dates taken last update
+     * value from the results
+     * 
+     * @return string
+     */
     protected function getDatesTakenLastUpdateQuery()
     {
         return $this->datesTakenLastUpdateQuery;
@@ -507,13 +547,16 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
     }
 
     /**
-     *
+     * @todo to be implemented
      */
     public function getMedia()
     {
 
     }
 
+    /**
+     * @todo to be implemented
+     */
     public function getNotes()
     {
 
@@ -534,6 +577,12 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
         return $this->originalFormat;
     }
 
+    /**
+     * Return the DOMXPath query string used to retrieve the original format value
+     * from the results
+     *
+     * @return string
+     */
     protected function getOriginalFormatQuery()
     {
         return $this->originalFormatQuery;
@@ -579,12 +628,23 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
         }
         return $this->ownerIconFarm;
     }
-
+    
+    /**
+     * Return the DOMXPath query string used to retrieve the owner icon farm value
+     * from the results
+     *
+     * @return string
+     */
     protected function getOwnerIconFarmQuery()
     {
         return $this->ownerIconFarmQuery;
     }
 
+    /**
+     * Return the owner icon server value from the results
+     *
+     * @return string|null
+     */
     public function getOwnerIconServer()
     {
         if (! isset($this->ownerIconServer)) {
@@ -594,7 +654,13 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
         }
         return $this->ownerIconServer;
     }
-
+  
+    /**
+     * Return the DOMXPath query string used to retrieve the owner icon server
+     * value from the results
+     *
+     * @return string
+     */
     protected function getOwnerIconServerQuery()
     {
         return $this->ownerIconServerQuery;
@@ -615,6 +681,12 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
         return $this->ownerLocation;
     }
 
+    /**
+     * Return the DOMXPath query string used to retrieve the owner location from the 
+     * results
+     *
+     * @return string
+     */
     protected function getOwnerLocationQuery()
     {
         return $this->ownerLocationQuery;
@@ -634,7 +706,12 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
         }
         return $this->ownerNsid;
     }
-
+    
+    /**
+     * Return the DOMXPath query string used to retrieve  owner NSID value
+     *
+     * @return string
+     */
     protected function getOwnerNsidQuery()
     {
         return $this->ownerNsidQuery;
@@ -655,6 +732,12 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
         return $this->ownerPathAlias;
     }
 
+    /**
+     * Return the DOMXPath query string used to retrieve the owner path alias value
+     * from the results
+     *
+     * @return string
+     */
     protected function getOwnerPathAliasQuery()
     {
         return $this->ownerPathAliasQuery;
@@ -675,6 +758,12 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
         return $this->ownerRealname;
     }
 
+    /**
+     * Return the DOMXPath query string used to retrieve the owner real name 
+     * value from the results
+     *
+     * @return string
+     */
     protected function getOwnerRealnameQuery()
     {
         return $this->ownerRealnameQuery;
@@ -695,22 +784,36 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
         return $this->ownerUsername;
     }
 
-
+    /**
+     * Return the DOMXPath query string used to retrieve the 
+     * owner username value from the results
+     *
+     * @return string
+     */
     protected function getOwnerUsernameQuery()
     {
         return $this->ownerUsernameQuery;
     }
 
+    /**
+     * @todo to be implemented
+     */
     public function getPeopleHasPeople()
     {
 
     }
 
+    /**
+     * @todo to be implemented
+     */
     public function getPublicEditabilityCanAddMeta()
     {
 
     }
 
+    /**
+     * @todo to be implemented
+     */
     public function getPublicEditabilityCanComment()
     {
 
@@ -819,6 +922,9 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
         return $this->serverQuery;
     }
 
+    /**
+     * @todo to be implemented
+     */
     public function getTags()
     {
 
@@ -839,42 +945,63 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
         return $this->title;
     }
 
+    /**
+     * Return the DOMXPath query string used to retrieve the title 
+     * value from the results
+     *
+     * @return string
+     */
     public function getTitleQuery()
     {
         return $this->titleQuery;
     }
 
+    /**
+     * @todo to be implemented
+     */
     public function getUrls()
     {
 
     }
 
+    /**
+     * @todo to be implemented
+      */
     public function getUsageCanBlog()
     {
 
     }
-
+   
+    /**
+     * @todo to be implemented
+     */
     public function getUsageCanDownload()
     {
 
     }
-
+  
+    /**
+     * @todo to be implemented
+     */
     public function getUsageCanPrint()
     {
 
     }
 
+    /**
+     * @todo to be implemented
+     */
     public function getUsageCanShare()
     {
 
     }
 
+    /**
+     * @todo to be implemented
+     */
     public function getViews()
     {
-        if (! isset($this->views)) {
-            $this->views = ($this->getDomElement()->getAttribute(self::ATTRIBUTE_VIEWS));
-        }
-        return $this->views;
+
     }
 
     /**
@@ -892,6 +1019,12 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
         return $this->visibilityIsFamily;
     }
 
+    /**
+     * Return the DOMXPath query string used to retrieve the visibility is family
+     * value from the results
+     *
+     * @return string
+     */
     protected function getVisibilityIsFamilyQuery()
     {
         return $this->visibilityIsFamilyQuery;
@@ -912,6 +1045,12 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
         return $this->visibilityIsFriend;
     }
 
+    /**
+     * Return the DOMXPath query string used to retrieve the visibility is friend value
+     * from the results
+     * 
+     * @return string
+     */
     protected function getVisibilityIsFriendQuery()
     {
         return $this->visibilityIsFriendQuery;
