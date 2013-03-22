@@ -1,6 +1,6 @@
 <?php
 /**
- * Result
+ * Result.php
  *
  * PHP Version  PHP 5.3.10
  *
@@ -79,11 +79,13 @@ class Result extends \MphpFlickrBase\Result\AbstractResult
     /**
      * Return the date uploaded of the Photo
      *
-     * @return string|null
+     * @return \DateTime|null
      */
     public function getDateUploaded()
     {
-        return $this->getAdapter()->getDateUploaded();
+        return ($timestamp = $this->getAdapter()->getDateUploaded())
+            ? new \DateTime("@$timestamp")
+            : null;
     }
 
     /**
@@ -93,7 +95,9 @@ class Result extends \MphpFlickrBase\Result\AbstractResult
      */
     public function getIsFavorite()
     {
-        return $this->getAdapter()->getIsFavorite();
+        return (null !== ($isFavorite = ($this->getAdapter()->getIsFavorite())))
+            ? (boolean)$isFavorite
+            : null;
     }
 
     /**
