@@ -133,16 +133,94 @@ class ResultTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($result->getOwnerNsid(), $adapter->getOwnerNsid());
     }
     
+    public function testGetOwnerUsername()
+    {
+        $adapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($this->getResults(), $this->getParameters());
+        $result = new \MphpFlickrPhotosGetInfo\Result\Result($adapter);
+        
+        $this->assertSame($result->getOwnerUsername(), $adapter->getOwnerUsername());
+    }
+    
+    public function testGetOwnerRealname()
+    {
+        $adapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($this->getResults(), $this->getParameters());
+        $result = new \MphpFlickrPhotosGetInfo\Result\Result($adapter);
+        
+        $this->assertSame($result->getOwnerRealname(), $adapter->getOwnerRealname());
+    }
+    
+    public function testGetOwnerLocation()
+    {
+        $adapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($this->getResults(), $this->getParameters());
+        $result = new \MphpFlickrPhotosGetInfo\Result\Result($adapter);
+        
+        $this->assertSame($result->getOwnerLocation(), $adapter->getOwnerLocation());
+    }
+    
+    public function testGetOwnerIconServer()
+    {
+        $adapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($this->getResults(), $this->getParameters());
+        $result = new \MphpFlickrPhotosGetInfo\Result\Result($adapter);
+        
+        $this->assertSame($result->getOwnerIconServer(), $adapter->getOwnerIconServer());
+    }
+    
+    public function testGetOwnerIconFarm()
+    {
+        $adapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($this->getResults(), $this->getParameters());
+        $result = new \MphpFlickrPhotosGetInfo\Result\Result($adapter);
+        
+        $this->assertSame($result->getOwnerIconFarm(), $adapter->getOwnerIconFarm());
+    }
+    
+    public function testGetOwnerPathAlias()
+    {
+        $adapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($this->getResults(), $this->getParameters());
+        $result = new \MphpFlickrPhotosGetInfo\Result\Result($adapter);
+        
+        $this->assertSame($result->getOwnerPathAlias(), $adapter->getOwnerPathAlias());
+    }
+    
+    public function testGetTitle()
+    {
+        $adapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($this->getResults(), $this->getParameters());
+        $result = new \MphpFlickrPhotosGetInfo\Result\Result($adapter);
+        
+        $this->assertSame($result->getTitle(), $adapter->getTitle());
+    }
+    
+    public function testGetDescription()
+    {
+        $adapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($this->getResults(), $this->getParameters());
+        $result = new \MphpFlickrPhotosGetInfo\Result\Result($adapter);
+        
+        $this->assertSame($result->getDescription(), $adapter->getDescription());
+    }
+    
+    public function testGetDatesPosted()
+    {
+        $adapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($this->getResults(), $this->getParameters());
+        $result = new \MphpFlickrPhotosGetInfo\Result\Result($adapter);
+        
+        $this->assertInstanceOf('DateTime', $result->getDatesPosted());
+    }
+    
+    public function testGetDatesTaken()
+    {
+        $adapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($this->getResults(), $this->getParameters());
+        $result = new \MphpFlickrPhotosGetInfo\Result\Result($adapter);
+        
+        $this->assertInstanceOf('DateTime', $result->getDatesTaken());
+    }
     
     
-    
-    
-    
-    
-    
-    
-    
-    
+    public function testGetDatesTakenLastUpdate()
+    {
+        $adapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($this->getResults(), $this->getParameters());
+        $result = new \MphpFlickrPhotosGetInfo\Result\Result($adapter);
+        
+        $this->assertInstanceOf('DateTime', $result->getDatesTakenLastUpdate());
+    }
     
     
     

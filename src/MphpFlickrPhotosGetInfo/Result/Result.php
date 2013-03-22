@@ -230,21 +230,41 @@ class Result extends \MphpFlickrBase\Result\AbstractResult
         return $this->getAdapter()->getOwnerIconFarm();
     }
 
+    /**
+     * Return the path alis property
+     * 
+     * @return string|null
+     */
     public function getOwnerPathAlias()
     {
         return $this->getAdapter()->getOwnerPathAlias();
     }
 
+    /**
+     * Return the title
+     * 
+     * @return string|null
+     */
     public function getTitle()
     {
         return $this->getAdapter()->getTitle();
     }
 
+    /**
+     * Return the description
+     * 
+     * @return string|null
+     */
     public function getDescription()
     {
         return $this->getAdapter()->getDescription();
     }
 
+    /**
+     * Return the visibility is public value
+     * 
+     * @return boolean|null
+     */
     public function getVisibilityIsPublic()
     {
         return $this->getAdapter()->getVisibilityIsPublic();
@@ -260,14 +280,28 @@ class Result extends \MphpFlickrBase\Result\AbstractResult
         return $this->getAdapter()->getVisibilityIsFamily();
     }
 
+    /**
+     * Return the dates posted value
+     * 
+     * @return \DateTime|null
+     */
     public function getDatesPosted()
     {
-        return $this->getAdapter()->getDatesPosted();
+        return ($timestamp = $this->getAdapter()->getDatesPosted())
+            ? new \DateTime("@$timestamp")
+            : null;
     }
 
+    /**
+     * Return the dates taken value
+     * 
+     * @return \DateTime|null
+     */
     public function getDatesTaken()
     {
-        return $this->getAdapter()->getDatesTaken();
+        return ($timestamp = $this->getAdapter()->getDatesTaken())
+            ? new \DateTime($timestamp)
+            : null;
     }
 
     public function getDatesTakenGranularity()
@@ -275,9 +309,15 @@ class Result extends \MphpFlickrBase\Result\AbstractResult
         return $this->getAdapter()->getDatesTakenGranularity();
     }
 
+    /**
+     * 
+     * @return \DateTime|null
+     */
     public function getDatesTakenLastUpdate()
     {
-        return $this->getAdapter()->getDatesTakenLastUpdate();
+        return ($timestamp = $this->getAdapter()->getDatesTakenLastUpdate())
+            ? new \DateTime("@$timestamp")
+            : null;
     }
 
     public function getEditabilityCanComment()
