@@ -21,15 +21,19 @@ namespace MphpFlickrPhotosGetInfo\Result;
  */
 class Result extends \MphpFlickrBase\Result\AbstractResult
 {
+    
     /**
      *
      * @param \MphpFlickrPhotosGetInfo\Adapter\Interfaces\Result\ResultAdapterInterface $adapter
      *
      * @return \MphpFlickrPhotosGetInfo\Result\Result
      */
-    public function setAdapter(\MphpFlickrPhotosGetInfo\Adapter\Interfaces\Result\ResultAdapterInterface $adapter)
+    public function setAdapter(\MphpFlickrBase\Adapter\Interfaces\Result\ResultAdapterInterface $adapter)
     {
-        return parent::setAdapter($adapter);
+        if ($adapter instanceof \MphpFlickrPhotosGetInfo\Adapter\Interfaces\Result\ResultAdapterInterface) {
+            return parent::setAdapter($adapter);
+        }
+        throw new \InvalidArgumentException('Invalid adapter supplied');
     }
 
     /**
