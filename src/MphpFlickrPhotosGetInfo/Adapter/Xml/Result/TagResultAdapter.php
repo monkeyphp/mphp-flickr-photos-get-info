@@ -46,5 +46,5 @@ class TagResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResult
     {
 
     }
-    
+
 }
