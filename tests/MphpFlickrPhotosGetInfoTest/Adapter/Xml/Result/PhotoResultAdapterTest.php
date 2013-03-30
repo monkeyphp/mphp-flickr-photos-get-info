@@ -134,6 +134,9 @@ class PhotoResultAdapterTest extends PHPUnit_Framework_TestCase
         $this->assertSame('0', $photoResultAdapter->getSafetyLevel());
     }
 
+    /**
+     * Test that we can retrieve the rotation value from the PhotoResultAdapter
+     */
     public function testGetRotation()
     {
         $results = $this->results;
@@ -143,6 +146,9 @@ class PhotoResultAdapterTest extends PHPUnit_Framework_TestCase
         $this->assertSame('0', $photoResultAdapter->getRotation());
     }
 
+    /**
+     * Test that we can retrieve the original secret value from the PhotoResultAdapter
+     */
     public function testGetOriginalSecret()
     {
         $results = $this->results;
@@ -314,6 +320,23 @@ class PhotoResultAdapterTest extends PHPUnit_Framework_TestCase
         $this->assertSame('1363315188', $photoResultAdapter->getDatesTakenLastUpdate());
     }
 
+    public function testGetNotes()
+    {
+        $photoResultAdapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\PhotoResultAdapter($this->results, array('photo_id' => '8558949624'));
+
+        $this->assertInstanceOf('MphpFlickrPhotosGetInfo\Adapter\Xml\ResultSet\NotesResultSetAdapter', $photoResultAdapter->getNotes());
+
+//        foreach ($photoResultAdapter->getNotes() as $note) {
+//            print $note->getAuthorName();
+//            print $note->getAuthorNsid();
+//            print $note->getNote();
+//            print $note->getW();
+//            print $note->getH();
+//            print $note->getY();
+//            print $note->getX();
+//            print $note->getId();
+//        }
+    }
 
 
     protected $results = '<?xml version="1.0" encoding="utf-8" ?>

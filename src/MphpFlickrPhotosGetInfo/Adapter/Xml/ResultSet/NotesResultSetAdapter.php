@@ -34,6 +34,6 @@ class NotesResultSetAdapter extends \MphpFlickrBase\Adapter\Xml\ResultSet\Abstra
      *
      * @var string
      */
-    protected $resultDomNodeListQuery = '/notes/note';
-    
+    protected $resultDomNodeListQuery = '//notes/note';
+
 }

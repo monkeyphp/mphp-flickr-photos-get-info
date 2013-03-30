@@ -104,10 +104,10 @@ class PhotoResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResu
 
     /**
      * DOMXPath query string used to retrieve the notes nodes from the results
-     * 
+     *
      * @var string
      */
-    protected $notesQuery = '/rsp/photos/notes';
+    protected $notesQuery = '//rsp/photo/notes';
 
     /**
      * DOMXPath query string used to retrieve the original format value from the
@@ -568,10 +568,16 @@ class PhotoResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResu
      */
     public function getNotes()
     {
+//        $nodeList = $this->getDomXpath($this->getDomDocument())->query('//rsp/photo/notes');
+//        //var_dump(get_class($nodeList));
+//        //var_dump($nodeList->item(0)->ownerDocument->saveXml($nodeList->item(0)));
+//        var_dump($nodeList->item(0));
+//
+
         // constructor requires results and parameters
         if (! isset($this->notesResultSetAdapter)) {
             $this->notesResultSetAdapter = (($nodeList = $this->getDomXpath($this->getDomDocument())->query($this->getNotesQuery())) && $nodeList->length)
-                ? new \MphpFlickrPhotosGetInfo\Adapter\Xml\ResultSet\NotesResultSetAdapter($nodeList->item(0)->value, $this->getParameters())
+                ? new \MphpFlickrPhotosGetInfo\Adapter\Xml\ResultSet\NotesResultSetAdapter($nodeList->item(0)->ownerDocument->saveXml($nodeList->item(0)), $this->getParameters())
                 : null;
         }
         return $this->notesResultSetAdapter;
