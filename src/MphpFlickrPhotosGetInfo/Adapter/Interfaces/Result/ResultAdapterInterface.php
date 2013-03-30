@@ -79,6 +79,7 @@ interface ResultAdapterInterface
 
     /**
      * Return a string value representing the editability can add meta
+     * Only returned for owning user
      *
      * @return string|null
      */
@@ -86,6 +87,7 @@ interface ResultAdapterInterface
 
     /**
      * Return a string value representing the ediatability can comment
+     * Only returned for owning user
      *
      * @return string|null
      */
@@ -107,6 +109,9 @@ interface ResultAdapterInterface
 
     /**
      * Return a string representing the is favourite value of the Photo
+     *
+     * The isfavorite attribute only makes sense for logged in users
+     * who don't own the photo
      *
      * @return string|null
      */
@@ -215,6 +220,20 @@ interface ResultAdapterInterface
     public function getPeopleHasPeople();
 
     /**
+     * Return a string representing the permission can add meta data value
+     *
+     * @return string|null
+     */
+    public function getPermissionsAddMeta();
+
+    /**
+     * Return a string represeting the permission can comment value
+     *
+     * @return string
+     */
+    public function getPermissionsComment();
+
+    /**
      * Return a string representing the public editability can add meta value
      *
      * @return string|null
@@ -251,23 +270,89 @@ interface ResultAdapterInterface
      * @return string|null
      */
     public function getSecret();
+
     /**
      * Return the server of the Photo
      *
      * @return string|null
      */
     public function getServer();
+
+    /**
+     * Return an instance of TagResultSet (i think) @tbd
+     *
+     * @return unknown
+     */
     public function getTags();
+
+    /**
+     * Return a string representing the title
+     *
+     * @return string|null
+     */
     public function getTitle();
+
+    /**
+     * Return a collection of Urls
+     *
+     * @return unknown
+     */
     public function getUrls();
+
+    /**
+     * Return a string representing the usage can blog value
+     *
+     * @return string|null
+     */
     public function getUsageCanBlog();
+
+    /**
+     * Return a string representing the usage can download value
+     *
+     * @return string|null
+     */
     public function getUsageCanDownload();
+
+    /**
+     * Return a string representing the usage can print value
+     *
+     * @return string|null
+     */
     public function getUsageCanPrint();
+
+    /**
+     * Return a string representing the usage can share value
+     *
+     * @return string|null
+     */
     public function getUsageCanShare();
+
+    /**
+     * Return a string representing the views value
+     *
+     * @return string|null
+     */
     public function getViews();
 
+    /**
+     * Return a string representing the visibility is family value
+     *
+     * @return string|null
+     */
     public function getVisibilityIsFamily();
+
+    /**
+     * Return a string representing the visibility is friend value
+     *
+     * @return string|null
+     */
     public function getVisibilityIsFriend();
+
+    /**
+     * Return a string representing the visibility is public value
+     *
+     * @return string|null
+     */
     public function getVisibilityIsPublic();
 
 }

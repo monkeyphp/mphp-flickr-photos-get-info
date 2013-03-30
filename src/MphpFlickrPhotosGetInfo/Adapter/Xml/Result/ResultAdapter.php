@@ -165,7 +165,7 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
 
     /**
      * DOMXPath query string used to retrieve the owner username from the results
-     * 
+     *
      * @var string
      */
     protected $ownerUsernameQuery = '/rsp/photo/owner/@username';
@@ -295,7 +295,7 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
     }
 
     /**
-     * Return the DOMXPath query string used to retrieve the dates posted value from 
+     * Return the DOMXPath query string used to retrieve the dates posted value from
      * the results
      *
      * @return string
@@ -306,7 +306,7 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
     }
 
     /**
-     * Return the dates taken value from the results 
+     * Return the dates taken value from the results
      *
      * @return string|null
      */
@@ -364,7 +364,7 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
     /**
      * Return the DOMXPath query string used to retrueve the dates taken last update
      * value from the results
-     * 
+     *
      * @return string
      */
     protected function getDatesTakenLastUpdateQuery()
@@ -628,7 +628,7 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
         }
         return $this->ownerIconFarm;
     }
-    
+
     /**
      * Return the DOMXPath query string used to retrieve the owner icon farm value
      * from the results
@@ -654,7 +654,7 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
         }
         return $this->ownerIconServer;
     }
-  
+
     /**
      * Return the DOMXPath query string used to retrieve the owner icon server
      * value from the results
@@ -682,7 +682,7 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
     }
 
     /**
-     * Return the DOMXPath query string used to retrieve the owner location from the 
+     * Return the DOMXPath query string used to retrieve the owner location from the
      * results
      *
      * @return string
@@ -706,7 +706,7 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
         }
         return $this->ownerNsid;
     }
-    
+
     /**
      * Return the DOMXPath query string used to retrieve  owner NSID value
      *
@@ -759,7 +759,7 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
     }
 
     /**
-     * Return the DOMXPath query string used to retrieve the owner real name 
+     * Return the DOMXPath query string used to retrieve the owner real name
      * value from the results
      *
      * @return string
@@ -785,7 +785,7 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
     }
 
     /**
-     * Return the DOMXPath query string used to retrieve the 
+     * Return the DOMXPath query string used to retrieve the
      * owner username value from the results
      *
      * @return string
@@ -946,7 +946,7 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
     }
 
     /**
-     * Return the DOMXPath query string used to retrieve the title 
+     * Return the DOMXPath query string used to retrieve the title
      * value from the results
      *
      * @return string
@@ -971,7 +971,7 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
     {
 
     }
-   
+
     /**
      * @todo to be implemented
      */
@@ -979,7 +979,7 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
     {
 
     }
-  
+
     /**
      * @todo to be implemented
      */
@@ -1048,7 +1048,7 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
     /**
      * Return the DOMXPath query string used to retrieve the visibility is friend value
      * from the results
-     * 
+     *
      * @return string
      */
     protected function getVisibilityIsFriendQuery()
@@ -1080,6 +1080,16 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
     protected function getVisibilityIsPublicQuery()
     {
         return $this->visibilityIsPublicQuery;
+    }
+
+    public function getPermissionsAddMeta()
+    {
+
+    }
+
+    public function getPermissionsComment()
+    {
+
     }
 
 }
