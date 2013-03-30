@@ -1,6 +1,6 @@
 <?php
 /**
- * ResultAdapter.php
+ * PhotoResultAdapter.php
  *
  * PHP Version  PHP 5.3.10
  *
@@ -12,14 +12,14 @@
 namespace MphpFlickrPhotosGetInfo\Adapter\Xml\Result;
 
 /**
- * ResultAdapter
+ * PhotoResultAdapter
  *
  * @category   MphpFlickrPhotosGetInfo
  * @package    MphpFlickrPhotosGetInfo
  * @subpackage MphpFlickrPhotosGetInfo\Adapter\Xml\Result
  * @author     David White [monkeyphp] <git@monkeyphp.com>
  */
-class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAdapter implements \MphpFlickrPhotosGetInfo\Adapter\Interfaces\Result\ResultAdapterInterface
+class PhotoResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAdapter implements \MphpFlickrPhotosGetInfo\Adapter\Interfaces\Result\PhotoResultAdapterInterface
 {
 
     /**
@@ -101,6 +101,13 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
      * @var string
      */
     protected $licenseQuery = '/rsp/photo/@license';
+
+    /**
+     * DOMXPath query string used to retrieve the notes nodes from the results
+     * 
+     * @var string
+     */
+    protected $notesQuery = '/rsp/photos/notes';
 
     /**
      * DOMXPath query string used to retrieve the original format value from the
@@ -555,11 +562,29 @@ class ResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAda
     }
 
     /**
-     * @todo to be implemented
+     * Return an instance of MphpFlickrPhotosGetInfo\Adapter\Xml\ResultSet\NotesResultSetAdapter
+     *
+     * @return \MphpFlickrPhotosGetInfo\Adapter\Xml\ResultSet\NotesResultSetAdapter
      */
     public function getNotes()
     {
+        // constructor requires results and parameters
+        if (! isset($this->notesResultSetAdapter)) {
+            $this->notesResultSetAdapter = (($nodeList = $this->getDomXpath($this->getDomDocument())->query($this->getNotesQuery())) && $nodeList->length)
+                ? new \MphpFlickrPhotosGetInfo\Adapter\Xml\ResultSet\NotesResultSetAdapter($nodeList->item(0)->value, $this->getParameters())
+                : null;
+        }
+        return $this->notesResultSetAdapter;
+    }
 
+    /**
+     * Return the DOMXPath query string used to retrieve the notes values
+     *
+     * @return string
+     */
+    protected function getNotesQuery()
+    {
+        return $this->notesQuery;
     }
 
     /**

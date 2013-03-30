@@ -1,6 +1,6 @@
 <?php
 /**
- * Result.php
+ * PhotoResult.php
  *
  * PHP Version  PHP 5.3.10
  *
@@ -12,25 +12,25 @@
 namespace MphpFlickrPhotosGetInfo\Result;
 
 /**
- * Result
+ * PhotoResult
  *
  * @category   MphpFlickrPhotosGetInfo
  * @package    MphpFlickrPhotosGetInfo
  * @subpackage MphpFlickrPhotosGetInfo\Result
  * @author     David White [monkeyphp] <git@monkeyphp.com>
  */
-class Result extends \MphpFlickrBase\Result\AbstractResult
+class PhotoResult extends \MphpFlickrBase\Result\AbstractResult
 {
-    
+
     /**
      *
      * @param \MphpFlickrPhotosGetInfo\Adapter\Interfaces\Result\ResultAdapterInterface $adapter
      *
-     * @return \MphpFlickrPhotosGetInfo\Result\Result
+     * @return \MphpFlickrPhotosGetInfo\Result\PhotoResult
      */
     public function setAdapter(\MphpFlickrBase\Adapter\Interfaces\Result\ResultAdapterInterface $adapter)
     {
-        if ($adapter instanceof \MphpFlickrPhotosGetInfo\Adapter\Interfaces\Result\ResultAdapterInterface) {
+        if ($adapter instanceof \MphpFlickrPhotosGetInfo\Adapter\Interfaces\Result\PhotoResultAdapterInterface) {
             return parent::setAdapter($adapter);
         }
         throw new \InvalidArgumentException('Invalid adapter supplied');
@@ -232,7 +232,7 @@ class Result extends \MphpFlickrBase\Result\AbstractResult
 
     /**
      * Return the path alis property
-     * 
+     *
      * @return string|null
      */
     public function getOwnerPathAlias()
@@ -242,7 +242,7 @@ class Result extends \MphpFlickrBase\Result\AbstractResult
 
     /**
      * Return the title
-     * 
+     *
      * @return string|null
      */
     public function getTitle()
@@ -252,7 +252,7 @@ class Result extends \MphpFlickrBase\Result\AbstractResult
 
     /**
      * Return the description
-     * 
+     *
      * @return string|null
      */
     public function getDescription()
@@ -262,7 +262,7 @@ class Result extends \MphpFlickrBase\Result\AbstractResult
 
     /**
      * Return the visibility is public value
-     * 
+     *
      * @return boolean|null
      */
     public function getVisibilityIsPublic()
@@ -282,7 +282,7 @@ class Result extends \MphpFlickrBase\Result\AbstractResult
 
     /**
      * Return the dates posted value
-     * 
+     *
      * @return \DateTime|null
      */
     public function getDatesPosted()
@@ -294,7 +294,7 @@ class Result extends \MphpFlickrBase\Result\AbstractResult
 
     /**
      * Return the dates taken value
-     * 
+     *
      * @return \DateTime|null
      */
     public function getDatesTaken()
@@ -310,7 +310,7 @@ class Result extends \MphpFlickrBase\Result\AbstractResult
     }
 
     /**
-     * 
+     *
      * @return \DateTime|null
      */
     public function getDatesTakenLastUpdate()
@@ -429,5 +429,5 @@ class Result extends \MphpFlickrBase\Result\AbstractResult
     {
         return $this->getAdapter()->getUrls();
     }
-    
+
 }

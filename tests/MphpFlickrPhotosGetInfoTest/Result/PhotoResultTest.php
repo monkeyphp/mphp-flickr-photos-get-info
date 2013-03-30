@@ -10,220 +10,225 @@
  * @author     David White [monkeyphp] <git@monkeyphp.com>
  */
 namespace MphpFlickrPhotosGetInfoTest\Result;
+
+use MphpFlickrPhotosGetInfo\Adapter\Xml\Result\PhotoResultAdapter;
+use MphpFlickrPhotosGetInfo\Result\PhotoResult;
+use PHPUnit_Framework_TestCase;
+
 /**
- * Description of ResultTest
+ * ResultTest
  *
  * @category   MphpFlickrPhotosGetInfoTest
  * @package    MphpFlickrPhotosGetInfoTest
  * @subpackage MphpFlickrPhotosGetInfoTest\Result
  * @author     David White [monkeyphp] <git@monkeyphp.com>
  */
-class ResultTest extends \PHPUnit_Framework_TestCase
+class ResultTest extends PHPUnit_Framework_TestCase
 {
-    
+
     public function test__construct()
     {
-        $adapter = $this->getMock('MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter', array(), array(), 'Adapter', false);
-        
+        $adapter = $this->getMock('MphpFlickrPhotosGetInfo\Adapter\Xml\Result\PhotoResultAdapter', array(), array(), 'Adapter', false);
+
         $parameters = array();
-        $result = new \MphpFlickrPhotosGetInfo\Result\Result($adapter);
-        
+        $result = new PhotoResult($adapter);
+
         $this->assertSame($adapter, $result->getAdapter());
     }
-    
+
     public function testGetId()
     {
-        $adapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($this->getResults(), $this->getParameters());
-        $result = new \MphpFlickrPhotosGetInfo\Result\Result($adapter);
+        $adapter = new PhotoResultAdapter($this->getResults(), $this->getParameters());
+        $result = new PhotoResult($adapter);
         $this->assertSame($adapter->getId(), $result->getId());
     }
-    
+
     public function testGetSecret()
     {
-        $adapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($this->getResults(), $this->getParameters());
-        $result = new \MphpFlickrPhotosGetInfo\Result\Result($adapter);
+        $adapter = new PhotoResultAdapter($this->getResults(), $this->getParameters());
+        $result = new PhotoResult($adapter);
         $this->assertSame($adapter->getSecret(), $result->getSecret());
     }
-    
+
     public function testGetServer()
     {
-        $adapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($this->getResults(), $this->getParameters());
-        $result = new \MphpFlickrPhotosGetInfo\Result\Result($adapter);
+        $adapter = new PhotoResultAdapter($this->getResults(), $this->getParameters());
+        $result = new PhotoResult($adapter);
         $this->assertSame($adapter->getServer(), $result->getServer());
     }
-    
+
     public function testGetFarm()
     {
-        $adapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($this->getResults(), $this->getParameters());
-        $result = new \MphpFlickrPhotosGetInfo\Result\Result($adapter);
+        $adapter = new PhotoResultAdapter($this->getResults(), $this->getParameters());
+        $result = new PhotoResult($adapter);
         $this->assertSame($adapter->getFarm(), $result->getFarm());
     }
-        
+
     public function testGetDateUploaded()
     {
-        $adapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($this->getResults(), $this->getParameters());
-        $result = new \MphpFlickrPhotosGetInfo\Result\Result($adapter);
-        
+        $adapter = new PhotoResultAdapter($this->getResults(), $this->getParameters());
+        $result = new PhotoResult($adapter);
+
         $this->assertInstanceOf('DateTime', $result->getDateUploaded());
     }
-    
+
     public function testIsFavorite()
     {
-        $adapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($this->getResults(), $this->getParameters());
-        $result = new \MphpFlickrPhotosGetInfo\Result\Result($adapter);
-        
+        $adapter = new PhotoResultAdapter($this->getResults(), $this->getParameters());
+        $result = new PhotoResult($adapter);
+
         $this->assertFalse($result->getIsFavorite());
     }
-    
+
     public function testGetLicense()
     {
-        $adapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($this->getResults(), $this->getParameters());
-        $result = new \MphpFlickrPhotosGetInfo\Result\Result($adapter);
-        
+        $adapter = new PhotoResultAdapter($this->getResults(), $this->getParameters());
+        $result = new PhotoResult($adapter);
+
         $this->markTestIncomplete();
     }
-    
+
     public function testGetSafetyLevel()
     {
-        $adapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($this->getResults(), $this->getParameters());
-        $result = new \MphpFlickrPhotosGetInfo\Result\Result($adapter);
-        
+        $adapter = new PhotoResultAdapter($this->getResults(), $this->getParameters());
+        $result = new PhotoResult($adapter);
+
         $this->markTestIncomplete();
     }
-    
+
     public function testGetRotation()
     {
-        $adapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($this->getResults(), $this->getParameters());
-        $result = new \MphpFlickrPhotosGetInfo\Result\Result($adapter);
-        
+        $adapter = new PhotoResultAdapter($this->getResults(), $this->getParameters());
+        $result = new PhotoResult($adapter);
+
         $this->assertEquals($adapter->getRotation(), $result->getRotation());
     }
-    
+
     public function testGetOriginalSecret()
     {
-        $adapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($this->getResults(), $this->getParameters());
-        $result = new \MphpFlickrPhotosGetInfo\Result\Result($adapter);
-        
+        $adapter = new PhotoResultAdapter($this->getResults(), $this->getParameters());
+        $result = new PhotoResult($adapter);
+
         $this->assertSame($result->getOriginalSecret(), $adapter->getOriginalSecret());
     }
-    
+
     public function testGetOriginalFormat()
     {
-        $adapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($this->getResults(), $this->getParameters());
-        $result = new \MphpFlickrPhotosGetInfo\Result\Result($adapter);
-        
+        $adapter = new PhotoResultAdapter($this->getResults(), $this->getParameters());
+        $result = new PhotoResult($adapter);
+
         $this->assertSame($result->getOriginalFormat(), $adapter->getOriginalFormat());
     }
-    
+
     public function testGetViews()
     {
         $this->markTestIncomplete();
     }
-    
+
     public function testGetMedia()
     {
         $this->markTestIncomplete();
     }
-    
+
     public function testGetOwnerNsid()
     {
-        $adapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($this->getResults(), $this->getParameters());
-        $result = new \MphpFlickrPhotosGetInfo\Result\Result($adapter);
-        
+        $adapter = new PhotoResultAdapter($this->getResults(), $this->getParameters());
+        $result = new PhotoResult($adapter);
+
         $this->assertSame($result->getOwnerNsid(), $adapter->getOwnerNsid());
     }
-    
+
     public function testGetOwnerUsername()
     {
-        $adapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($this->getResults(), $this->getParameters());
-        $result = new \MphpFlickrPhotosGetInfo\Result\Result($adapter);
-        
+        $adapter = new PhotoResultAdapter($this->getResults(), $this->getParameters());
+        $result = new PhotoResult($adapter);
+
         $this->assertSame($result->getOwnerUsername(), $adapter->getOwnerUsername());
     }
-    
+
     public function testGetOwnerRealname()
     {
-        $adapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($this->getResults(), $this->getParameters());
-        $result = new \MphpFlickrPhotosGetInfo\Result\Result($adapter);
-        
+        $adapter = new PhotoResultAdapter($this->getResults(), $this->getParameters());
+        $result = new PhotoResult($adapter);
+
         $this->assertSame($result->getOwnerRealname(), $adapter->getOwnerRealname());
     }
-    
+
     public function testGetOwnerLocation()
     {
-        $adapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($this->getResults(), $this->getParameters());
-        $result = new \MphpFlickrPhotosGetInfo\Result\Result($adapter);
-        
+        $adapter = new PhotoResultAdapter($this->getResults(), $this->getParameters());
+        $result = new PhotoResult($adapter);
+
         $this->assertSame($result->getOwnerLocation(), $adapter->getOwnerLocation());
     }
-    
+
     public function testGetOwnerIconServer()
     {
-        $adapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($this->getResults(), $this->getParameters());
-        $result = new \MphpFlickrPhotosGetInfo\Result\Result($adapter);
-        
+        $adapter = new PhotoResultAdapter($this->getResults(), $this->getParameters());
+        $result = new PhotoResult($adapter);
+
         $this->assertSame($result->getOwnerIconServer(), $adapter->getOwnerIconServer());
     }
-    
+
     public function testGetOwnerIconFarm()
     {
-        $adapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($this->getResults(), $this->getParameters());
-        $result = new \MphpFlickrPhotosGetInfo\Result\Result($adapter);
-        
+        $adapter = new PhotoResultAdapter($this->getResults(), $this->getParameters());
+        $result = new PhotoResult($adapter);
+
         $this->assertSame($result->getOwnerIconFarm(), $adapter->getOwnerIconFarm());
     }
-    
+
     public function testGetOwnerPathAlias()
     {
-        $adapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($this->getResults(), $this->getParameters());
-        $result = new \MphpFlickrPhotosGetInfo\Result\Result($adapter);
-        
+        $adapter = new PhotoResultAdapter($this->getResults(), $this->getParameters());
+        $result = new PhotoResult($adapter);
+
         $this->assertSame($result->getOwnerPathAlias(), $adapter->getOwnerPathAlias());
     }
-    
+
     public function testGetTitle()
     {
-        $adapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($this->getResults(), $this->getParameters());
-        $result = new \MphpFlickrPhotosGetInfo\Result\Result($adapter);
-        
+        $adapter = new PhotoResultAdapter($this->getResults(), $this->getParameters());
+        $result = new PhotoResult($adapter);
+
         $this->assertSame($result->getTitle(), $adapter->getTitle());
     }
-    
+
     public function testGetDescription()
     {
-        $adapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($this->getResults(), $this->getParameters());
-        $result = new \MphpFlickrPhotosGetInfo\Result\Result($adapter);
-        
+        $adapter = new PhotoResultAdapter($this->getResults(), $this->getParameters());
+        $result = new PhotoResult($adapter);
+
         $this->assertSame($result->getDescription(), $adapter->getDescription());
     }
-    
+
     public function testGetDatesPosted()
     {
-        $adapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($this->getResults(), $this->getParameters());
-        $result = new \MphpFlickrPhotosGetInfo\Result\Result($adapter);
-        
+        $adapter = new PhotoResultAdapter($this->getResults(), $this->getParameters());
+        $result = new PhotoResult($adapter);
+
         $this->assertInstanceOf('DateTime', $result->getDatesPosted());
     }
-    
+
     public function testGetDatesTaken()
     {
-        $adapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($this->getResults(), $this->getParameters());
-        $result = new \MphpFlickrPhotosGetInfo\Result\Result($adapter);
-        
+        $adapter = new PhotoResultAdapter($this->getResults(), $this->getParameters());
+        $result = new PhotoResult($adapter);
+
         $this->assertInstanceOf('DateTime', $result->getDatesTaken());
     }
-    
-    
+
+
     public function testGetDatesTakenLastUpdate()
     {
-        $adapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\ResultAdapter($this->getResults(), $this->getParameters());
-        $result = new \MphpFlickrPhotosGetInfo\Result\Result($adapter);
-        
+        $adapter = new PhotoResultAdapter($this->getResults(), $this->getParameters());
+        $result = new PhotoResult($adapter);
+
         $this->assertInstanceOf('DateTime', $result->getDatesTakenLastUpdate());
     }
-    
-    
-    
+
+
+
     protected function getParameters()
     {
         return array('api_key' => '0123456789', 'method' => 'flick.photos.getInfo', 'photo_id' => '8558949624');

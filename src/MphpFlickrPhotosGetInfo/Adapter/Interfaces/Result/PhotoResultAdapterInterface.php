@@ -1,6 +1,6 @@
 <?php
 /**
- * ResultAdapterInterface
+ * PhotoResultAdapterInterface.php
  *
  * PHP Version  PHP 5.3.10
  *
@@ -12,7 +12,7 @@
 namespace MphpFlickrPhotosGetInfo\Adapter\Interfaces\Result;
 
 /**
- * ResultAdapterInterface
+ * PhotoResultAdapterInterface
  *
  * @link http://www.flickr.com/services/api/flickr.photos.getInfo.html
  *
@@ -21,7 +21,7 @@ namespace MphpFlickrPhotosGetInfo\Adapter\Interfaces\Result;
  * @subpackage MphpFlickrPhotosGetInfo\Adapter\Interfaces\Result
  * @author     David White [monkeyphp] <git@monkeyphp.com>
  */
-interface ResultAdapterInterface
+interface PhotoResultAdapterInterface
 {
 
     /**
@@ -132,8 +132,8 @@ interface ResultAdapterInterface
     public function getMedia();
 
     /**
-     * Return an instance of NoteResultSetAdapter
-     * @todo
+     * Return an instance of NotesResultSetAdapterInterface
+     * 
      * example response xml:
      * <note id="313"
      *       author="12037949754@N01"
@@ -145,7 +145,7 @@ interface ResultAdapterInterface
      *     foo
      * </note>
      *
-     * @return \MphpFlickrPhotosNotes\Adapter\ResultSet\ResultSet (I think)
+     * @return \MphpFlickrPhotosGetInfo\Adapter\Interfaces\ResultSet\NotesResultSetAdpaterInterface
      */
     public function getNotes();
 
