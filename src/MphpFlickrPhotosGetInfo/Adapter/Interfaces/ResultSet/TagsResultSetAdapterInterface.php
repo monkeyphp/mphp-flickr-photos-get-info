@@ -21,5 +21,5 @@ namespace MphpFlickrPhotosGetInfo\Adapter\Interfaces\ResultSet;
  */
 interface TagsResultSetAdapterInterface
 {
-    
+
 }

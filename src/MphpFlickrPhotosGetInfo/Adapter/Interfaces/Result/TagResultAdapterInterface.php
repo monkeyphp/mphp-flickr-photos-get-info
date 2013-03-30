@@ -24,14 +24,39 @@ namespace MphpFlickrPhotosGetInfo\Adapter\Interfaces\Result;
 interface TagResultAdapterInterface
 {
 
+    /**
+     * Return the id string of the tag
+     *
+     * @return string|null
+     */
     public function getId();
 
+    /**
+     * Return the author Nsid value
+     *
+     * @return string|null
+     */
     public function getAuthor();
 
+    /**
+     * Return the raw tag value
+     *
+     * @return string|null
+     */
     public function getRaw();
 
+    /**
+     * Return the machine tag value
+     *
+     * @return string|null
+     */
     public function getMachineTag();
 
+    /**
+     * Return the actual textual value of the tag
+     *
+     * @return string|null
+     */
     public function getTag();
 
 }
