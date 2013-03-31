@@ -22,26 +22,83 @@ namespace MphpFlickrPhotosGetInfo\Adapter\Xml\Result;
 class TagResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAdapter implements \MphpFlickrPhotosGetInfo\Adapter\Interfaces\Result\TagResultAdapterInterface
 {
 
+    /**
+     * The author of the tag
+     *
+     * @var string|null
+     */
     protected $author;
 
+    /**
+     * DOMXPath query string used to retrieve the author value from the result
+     *
+     * @var string
+     */
     protected $authorQuery;
 
+    /**
+     * The id value
+     *
+     * @var string|null
+     */
     protected $id;
 
+    /**
+     * DOMXPath query string used to retrieve the id  value from the results
+     *
+     * @var string
+     */
     protected $idQuery;
 
+    /**
+     * The machine tag value
+     *
+     * @var string|null
+     */
     protected $machineTag;
 
+    /**
+     * DOMXPath query string used to retrieve the machine tag value from the
+     * results
+     *
+     * @var string
+     */
     protected $machineTagQuery;
 
+    /**
+     * The raw tag value
+     *
+     * @var string|null
+     */
     protected $raw;
 
+    /**
+     * DOMXPath query string used to retrieve the raw value from the results
+     *
+     * @var string
+     */
     protected $rawQuery;
 
+    /**
+     * The actual textual value of the tag
+     *
+     * @var string|null
+     */
     protected $tag;
-    
-    protected $taguery;
 
+    /**
+     * DOMXPath query string used to retrieve the actual textual value of the
+     * tag from the results
+     *
+     * @var string
+     */
+    protected $tagQuery;
+
+    /**
+     * Return the author
+     *
+     * @return string|null
+     */
     public function getAuthor()
     {
         if (! isset($this->author)) {
@@ -52,11 +109,22 @@ class TagResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResult
         return $this->author;
     }
 
+    /**
+     * Return the DOMXPath query string used to retrieve the author value from
+     * the results
+     *
+     * @return string
+     */
     protected function getAuthorQuery()
     {
         return $this->authorQuery;
     }
 
+    /**
+     * Return the id value
+     * 
+     * @return string|null
+     */
     public function getId()
     {
         if (! isset($this->id)) {
@@ -67,11 +135,22 @@ class TagResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResult
         return $this->id;
     }
 
+    /**
+     * Return the DOMXPath query string used to retrieve the id value from
+     * the results
+     *
+     * @return string
+     */
     protected function getIdQuery()
     {
         return $this->idQuery;
     }
 
+    /**
+     * Return the machine tag value
+     *
+     * @return string|null
+     */
     public function getMachineTag()
     {
         if (! isset($this->machineTag)) {
@@ -82,11 +161,22 @@ class TagResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResult
         return $this->machineTag;
     }
 
+    /**
+     * Return the DOMXPath query string used to retrieve the machine tag value
+     * from the results
+     *
+     * @return string
+     */
     protected function getMachineTagQuery()
     {
         return $this->machineTagQuery;
     }
 
+    /**
+     * Return the raw tag value
+     *
+     * @return string|null
+     */
     public function getRaw()
     {
         if (! isset($this->raw)) {
@@ -97,11 +187,22 @@ class TagResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResult
         return $this->raw;
     }
 
+    /**
+     * Return the DOMXPath query string used to retrieve the raw tag value from
+     * the results
+     *
+     * @return string
+     */
     protected function getRawQuery()
     {
         return $this->rawQuery;
     }
 
+    /**
+     * Return the actual textual value of the tag
+     *
+     * @return string|null
+     */
     public function getTag()
     {
         if (! isset($this->tag)) {
@@ -112,6 +213,12 @@ class TagResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResult
         return $this->tag;
     }
 
+    /**
+     * Return the DOMXPath query string used to retrieve the tag value from
+     * the results
+     *
+     * @return string
+     */
     protected function getTagQuery()
     {
         return $this->tagQuery;
