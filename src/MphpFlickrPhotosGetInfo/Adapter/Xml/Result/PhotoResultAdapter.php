@@ -168,14 +168,14 @@ class PhotoResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResu
      *
      * @var string
      */
-    protected $datesTakenLastUpdateQuery = '/rsp/photo/dates/@lastupdate';
+    protected $datesTakenLastUpdateQuery = '//rsp/photo/dates/@lastupdate';
 
     /**
      * DOMXPath query string used to retrieve the dates taken value
      *
      * @var string
      */
-    protected $datesTakenQuery = '/rsp/photo/dates/@taken';
+    protected $datesTakenQuery = '//rsp/photo/dates/@taken';
 
     /**
      * DOMXPath query string used to retrieve the description value
