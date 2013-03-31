@@ -109,6 +109,12 @@ class PhotoResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResu
      */
     protected $notesQuery = '//rsp/photo/notes';
 
+    protected $notesResultSetAdapter;
+
+    protected $tagsQuery = '//rsp/photo/tags';
+
+    protected $tagsResultSetAdapter;
+
     /**
      * DOMXPath query string used to retrieve the original format value from the
      * results
@@ -568,12 +574,6 @@ class PhotoResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResu
      */
     public function getNotes()
     {
-//        $nodeList = $this->getDomXpath($this->getDomDocument())->query('//rsp/photo/notes');
-//        //var_dump(get_class($nodeList));
-//        //var_dump($nodeList->item(0)->ownerDocument->saveXml($nodeList->item(0)));
-//        var_dump($nodeList->item(0));
-//
-
         // constructor requires results and parameters
         if (! isset($this->notesResultSetAdapter)) {
             $this->notesResultSetAdapter = (($nodeList = $this->getDomXpath($this->getDomDocument())->query($this->getNotesQuery())) && $nodeList->length)
@@ -954,11 +954,19 @@ class PhotoResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResu
     }
 
     /**
-     * @todo to be implemented
+     * Return an instance of MphpFlickrPhotosGetInfo\Adapter\Xml\Result\TagsResultSetAdapter
+     *
+     * @return \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\TagsResultSetAdapter
      */
     public function getTags()
     {
-
+        // constructor requires results and parameters
+        if (! isset($this->tagsResultSetAdapter)) {
+            $this->tagsResultSetAdapter = (($nodeList = $this->getDomXpath($this->getDomDocument())->query($this->getTagsQuery())) && $nodeList->length)
+                ? new \MphpFlickrPhotosGetInfo\Adapter\Xml\ResultSet\TagsResultSetAdapter($nodeList->item(0)->ownerDocument->saveXml($nodeList->item(0)), $this->getParameters())
+                : null;
+        }
+        return $this->tagsResultSetAdapter;
     }
 
     /**
