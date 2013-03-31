@@ -289,6 +289,18 @@ class PhotoResultAdapterTest extends PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test that we can retrieve the UrlsResultSetAdapter
+     */
+    public function testGetUrls()
+    {
+        $photoResultAdapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\PhotoResultAdapter($this->getResults(), $this->getParameters());
+        $this->assertInstanceOf('MphpFlickrPhotosGetInfo\Adapter\Xml\ResultSet\UrlsResultSetAdapter', $photoResultAdapter->getUrls());
+//        foreach ($photoResultAdapter->getUrls() as $url) {
+//            print $url->getUrl();
+//        }
+    }
+
+    /**
      * Test that we ca retrieve the editability can comment value
      */
     public function testGetEditabilityCanComment()
