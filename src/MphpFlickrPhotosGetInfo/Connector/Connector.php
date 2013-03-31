@@ -33,7 +33,7 @@ class Connector extends \MphpFlickrBase\Connector\AbstractConnector
      *
      * @var string
      */
-    protected $resultAdapterClass = 'MphpFlickrPhotosGetInfo\Adapter\Result\Result';
+    protected $resultAdapterClass = 'MphpFlickrPhotosGetInfo\Adapter\Result\PhotoResult';
 
     /**
      *
