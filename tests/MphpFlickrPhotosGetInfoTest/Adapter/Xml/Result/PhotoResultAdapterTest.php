@@ -352,6 +352,50 @@ class PhotoResultAdapterTest extends PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test that we can retrieve the usage can blog value
+     */
+    public function testGetUsageCanBlog()
+    {
+        $photoResultAdapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\PhotoResultAdapter($this->getResults(), $this->getParameters());
+        $this->assertSame('0', $photoResultAdapter->getUsageCanBlog());
+    }
+
+    public function testGetUsageCanDownload()
+    {
+        $photoResultAdapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\PhotoResultAdapter($this->getResults(), $this->getParameters());
+        $this->assertSame('1', $photoResultAdapter->getUsageCanDownload());
+    }
+
+    public function testGetUsageCanPrint()
+    {
+        $photoResultAdapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\PhotoResultAdapter($this->getResults(), $this->getParameters());
+        $this->assertSame('0', $photoResultAdapter->getUsageCanPrint());
+    }
+
+    public function testGetUsageCanShare()
+    {
+        $photoResultAdapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\PhotoResultAdapter($this->getResults(), $this->getParameters());
+        $this->assertSame('1', $photoResultAdapter->getUsageCanShare());
+    }
+
+    public function testGetViews()
+    {
+        $photoResultAdapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\PhotoResultAdapter($this->getResults(), $this->getParameters());
+        $this->assertSame('25', $photoResultAdapter->getViews());
+    }
+
+    public function testGetPermissionsPermAddMeta()
+    {
+        $photoResultAdapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\PhotoResultAdapter($this->getResults(), $this->getParameters());
+        $this->assertSame('2', $photoResultAdapter->getPermissionsAddMeta());
+    }
+
+    public function testGetPermissionsPermComment()
+    {
+        $photoResultAdapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\PhotoResultAdapter($this->getResults(), $this->getParameters());
+        $this->assertSame('3', $photoResultAdapter->getPermissionsComment());
+    }
+    /**
      * Helper method
      *
      * @return array
@@ -370,12 +414,16 @@ class PhotoResultAdapterTest extends PHPUnit_Framework_TestCase
     {
         return '<?xml version="1.0" encoding="utf-8" ?>
         <rsp stat="ok">
-            <photo id="8558949624" secret="5d509a7677" server="8530" farm="9" dateuploaded="1363313061" isfavorite="0" license="0" safety_level="0" rotation="0" originalsecret="43df79aefd" originalformat="jpg" views="25" media="photo">
+            <photo id="8558949624" secret="5d509a7677" server="8530" farm="9"
+                dateuploaded="1363313061" isfavorite="0" license="0"
+                safety_level="0" rotation="0" originalsecret="43df79aefd"
+                originalformat="jpg" views="25" media="photo">
                 <owner nsid="65448995@N05" username="Utchat" realname="Leslie  Lazenby" location="Findlay, OH, USA" iconserver="7277" iconfarm="8" path_alias="" />
                 <title>PENTAX Metalica</title>
                 <description>In 1960 Asahi Optical introduced the SLR prototype which they called the Metallica.</description>
                 <visibility ispublic="1" isfriend="0" isfamily="0" />
                 <dates posted="1363313061" taken="2013-03-12 15:22:43" takengranularity="0" lastupdate="1363315188" />
+                <permissions permcomment="3" permaddmeta="2" />
                 <editability cancomment="0" canaddmeta="0" />
                 <publiceditability cancomment="1" canaddmeta="0" />
                 <usage candownload="1" canblog="0" canprint="0" canshare="1" />
