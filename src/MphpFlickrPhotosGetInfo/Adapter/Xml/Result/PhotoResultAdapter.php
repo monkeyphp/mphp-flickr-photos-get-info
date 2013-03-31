@@ -1249,7 +1249,9 @@ class PhotoResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResu
     }
 
     /**
-     * @todo to be implemented
+     * Return the people has people value
+     *
+     * @return string|null
      */
     public function getPeopleHasPeople()
     {
@@ -1454,7 +1456,7 @@ class PhotoResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResu
         return $this->tagsQuery;
     }
 
-        /**
+    /**
      * Return the title property from the results
      *
      * @return string|null
@@ -1605,7 +1607,9 @@ class PhotoResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResu
     }
 
     /**
-     * @todo to be implemented
+     * Return the views value
+     *
+     * @return string|null
      */
     public function getViews()
     {
@@ -1617,6 +1621,12 @@ class PhotoResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResu
         return $this->views;
     }
 
+    /**
+     * Return the DOMXPath query string used to retrieve the views value from
+     * the results
+     *
+     * @return string
+     */
     protected function getViewsQuery()
     {
         return $this->viewsQuery;
@@ -1729,6 +1739,7 @@ class PhotoResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResu
     }
 
     protected $permissionsPermAddMeta;
+    
     protected $permissionsPermAddMetaQuery = '//rsp/photo/permissions/@permaddmeta';
 
     protected function getPermissionsPermAddMetaQuery()
