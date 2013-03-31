@@ -23,11 +23,123 @@ class PhotoResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResu
 {
 
     /**
+     * The comments value
+     *
+     * @var string|null
+     */
+    protected $comments;
+
+    /**
      * DOMXPath query string used to retrieve the comments value from the results
      *
      * @var string
      */
     protected $commentsQuery = '/rsp/photo/comments';
+
+    /**
+     * UNIX timestamp representing the date the photo was uploaded
+     *
+     * @var string|null
+     */
+    protected $dateUploaded;
+
+    /**
+     * UNIX timestamp representing the date the photo was posted
+     *
+     * @var string|null
+     */
+    protected $datesPosted;
+
+    /**
+     * MySql datetime string representing the datetime the photo was taken
+     *
+     * @var string|null
+     */
+    protected $datesTaken;
+
+    /**
+     * The date taken granularity value
+     *
+     * @var string|null
+     */
+    protected $datesTakenGranularity;
+
+    /**
+     * Description of the photo
+     *
+     * @var string|null
+     */
+    protected $description;
+
+    /**
+     * The farm value
+     *
+     * @var sring|null
+     */
+    protected $farm;
+
+    /**
+     * The photo id value
+     *
+     * @var string|null
+     */
+    protected $id;
+
+    /**
+     * The is favorite value
+     *
+     * @var string|null
+     */
+    protected $isFavorite;
+
+    /**
+     * The license value
+     *
+     * @var string|null
+     */
+    protected $license;
+
+    /**
+     * The original format value
+     *
+     * @var string|null
+     */
+    protected $originalFormat;
+
+    /**
+     * The original secret value
+     *
+     * @var string|null
+     */
+    protected $originalSecret;
+
+    /**
+     * The owner username
+     *
+     * @var string|null
+     */
+    protected $ownerUsername;
+
+    /**
+     * The visibility is family value
+     *
+     * @var string|null
+     */
+    protected $visibilityIsFamily;
+
+    /**
+     * The visibility is friend value
+     *
+     * @var string|null
+     */
+    protected $visibilityIsFriend;
+
+    /**
+     * The visibility is public value
+     *
+     * @var string|null
+     */
+    protected $visibilityIsPublic;
 
     /**
      * DOMXPath query string used to retrieve the date uploaded value from the
@@ -73,6 +185,36 @@ class PhotoResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResu
     protected $descriptionQuery = '/rsp/photo/description';
 
     /**
+     * The editability can comment value
+     *
+     * @var string|null
+     */
+    protected $editabilityCanComment;
+
+    /**
+     * DOMXPath query string used to retrieve the editability can comment
+     * value from the results
+     *
+     * @var string
+     */
+    protected $editabilityCanCommentQuery = '/rsp/photo/editability/@cancomment';
+
+    /**
+     * The editability can add meta value
+     *
+     * @var string|null
+     */
+    protected $editabilityCanAddMeta;
+
+    /**
+     * DOMXPath query string used to retrieve the editability can add meta
+     * value from the results
+     *
+     * @var string|null
+     */
+    protected $editabilityCanAddMetaQuery = '/rsp/photo/editability/@canaddmeta';
+
+    /**
      * DOMXPath query string used to retrieve the farm value from the
      * results
      *
@@ -103,16 +245,45 @@ class PhotoResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResu
     protected $licenseQuery = '/rsp/photo/@license';
 
     /**
+     * The media value
+     *
+     * @var string|null
+     */
+    protected $media;
+
+    /**
+     * DOMXPath query string used to retrieve the media value from the results
+     *
+     * @var string
+     */
+    protected $mediaQuery = '/rsp/photo/@media';
+
+    /**
      * DOMXPath query string used to retrieve the notes nodes from the results
      *
      * @var string
      */
     protected $notesQuery = '//rsp/photo/notes';
 
+    /**
+     * Instance of NotesResultSetAdapter
+     *
+     * @var \MphpFlickrPhotosGetInfo\Adapter\Xml\ResultSet\NotesResultSetAdapter|null
+     */
     protected $notesResultSetAdapter;
 
+    /**
+     * DOMXPath query string used to retrieve the tags value from the results
+     *
+     * @var string
+     */
     protected $tagsQuery = '//rsp/photo/tags';
 
+    /**
+     * Instance of TagsResultSetAdapter
+     *
+     * @var \MphpFlickrPhotosGetInfo\Adapter\Xml\ResultSet\TagsResultSetAdapter|null
+     */
     protected $tagsResultSetAdapter;
 
     /**
@@ -132,12 +303,26 @@ class PhotoResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResu
     protected $originalSecretQuery = '/rsp/photo/@originalsecret';
 
     /**
+     * Owner icon farm value
+     *
+     * @var string|null
+     */
+    protected $ownerIconFarm;
+
+    /**
      * DOMXPath query string used to retrieve the icon farm value from the
      * results
      *
      * @var string
      */
     protected $ownerIconFarmQuery = '/rsp/photo/owner/@iconfarm';
+
+    /**
+     * Owner icon server value
+     *
+     * @var string|null
+     */
+    protected $ownerIconServer;
 
     /**
      * DOMXPath query string used to retrieve the icon server from the results
@@ -147,10 +332,24 @@ class PhotoResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResu
     protected $ownerIconServerQuery = '/rsp/photo/owner/@iconserver';
 
     /**
+     * Owner location value
+     *
+     * @var string|null
+     */
+    protected $ownerLocation;
+
+    /**
      * DOMXPath query string used to retrieve the owner location from the results
      * @var string
      */
     protected $ownerLocationQuery = '/rsp/photo/owner/@location';
+
+    /**
+     * Owner Nsid value
+     *
+     * @var string|null
+     */
+    protected $ownerNsid;
 
     /**
      * DOMXPath query string used to retrieve the owner nsid value from the
@@ -161,12 +360,26 @@ class PhotoResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResu
     protected $ownerNsidQuery = '/rsp/photo/owner/@nsid';
 
     /**
+     * Owner path alias value
+     *
+     * @var string|null
+     */
+    protected $ownerPathAlias;
+
+    /**
      * DOMXPath query string used to retrieve the owner path alias value from
      * the results
      *
      * @var string
      */
     protected $ownerPathAliasQuery = '/rsp/photo/owner/@path_alias';
+
+    /**
+     * Owner real name value
+     *
+     * @var string|null
+     */
+    protected $ownerRealname;
 
     /**
      * DOMXPath query string used to retrieve the owner real name value from the
@@ -184,11 +397,70 @@ class PhotoResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResu
     protected $ownerUsernameQuery = '/rsp/photo/owner/@username';
 
     /**
+     * People has people value
+     *
+     * @var string|null
+     */
+    protected $peopleHasPeople;
+
+    /**
+     * DOMXPath query string used to retrieve the people has people value from
+     * the results
+     *
+     * @var string
+     */
+    protected $peopleHasPeopleQuery = '//rsp/photo/people/@haspeople';
+
+    /**
+     * Public editability can add meta value
+     *
+     * @var string|null
+     */
+    protected $publicEditabilityCanAddMeta;
+
+    /**
+     * DOMXPath query string used to retrieve the public editability can add meta
+     * value from the results
+     *
+     * @var string
+     */
+    protected $publicEditabilityCanAddMetaQuery = '/rsp/photo/publiceditability/@canaddmeta';
+
+    /**
+     * Public editability can comment value
+     *
+     * @var string|null
+     */
+    protected $publicEditabilityCanComment;
+
+    /**
+     * DOMXPath query string used to retrieve the public editability can
+     * comment value from the results
+     *
+     * @var string
+     */
+    protected $publicEditabilityCanCommentQuery = '/rsp/photo/publiceditability/@cancomment';
+
+    /**
+     * The rotation value
+     *
+     * @var string|null
+     */
+    protected $rotation;
+
+    /**
      * DOMXPath query string used to retrieve the rotation value from the results
      *
      * @var string
      */
     protected $rotationQuery = '/rsp/photo/@rotation';
+
+    /**
+     * The safety level value
+     *
+     * @var string|null
+     */
+    protected $safetyLevel;
 
     /**
      * DOMXPath query string used to retrieve the safety level from the results
@@ -198,11 +470,25 @@ class PhotoResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResu
     protected $safetyLevelQuery = '/rsp/photo/@safety_level';
 
     /**
+     * The secret value
+     *
+     * @var string|null
+     */
+    protected $secret;
+
+    /**
      * DOMXPath query string used to retrieve the secret value from the results
      *
      * @var string
      */
     protected $secretQuery = '/rsp/photo/@secret';
+
+    /**
+     * The server value
+     *
+     * @var string|null
+     */
+    protected $server;
 
     /**
      * DOMXPath query string used to retrieve the server value from the results
@@ -212,11 +498,32 @@ class PhotoResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResu
     protected $serverQuery = '/rsp/photo/@server';
 
     /**
+     * The title value
+     *
+     * @var string|null
+     */
+    protected $title;
+
+    /**
      * DOMXPath query string used to retrieve the title value from the results
      *
      * @var string
      */
     protected $titleQuery = '/rsp/photo/title';
+
+    /**
+     * Instance of UrlsResultSetAdapter
+     *
+     * @var MphpFlickrPhotosGetInfo\Adapter\Xml\ResultSet\UrlsResultSetAdapter|null
+     */
+    protected $urlsResultSetAdapter;
+
+    /**
+     * DOMXPath query string used to retrieve the urls from the results
+     *
+     * @var string
+     */
+    protected $urlsQuery = '//photo/urls';
 
     /**
      * DOMXPath query string used to retrieve the isfamily value from the results
@@ -325,7 +632,7 @@ class PhotoResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResu
      */
     public function getDatesTaken()
     {
-        if (! isset($this->datesTake)) {
+        if (! isset($this->datesTaken)) {
               $this->datesTaken = (($nodeList = $this->getDomXPath($this->getDomDocument())->query($this->getDatesTakenQuery())) && $nodeList->length)
                 ? $nodeList->item(0)->nodeValue
                 : null;
@@ -438,6 +745,17 @@ class PhotoResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResu
     }
 
     /**
+     * Return the DOMXPath query string used to retrieve the editability
+     * can add meta value from the results
+     *
+     * @return string
+     */
+    protected function getEditabilityCanAddMetaQuery()
+    {
+        return $this->editabilityCanAddMetaQuery;
+    }
+
+    /**
      * Return the editability can comment value
      *
      * @return string|null
@@ -450,6 +768,17 @@ class PhotoResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResu
                 : null;
         }
         return $this->editabilityCanComment;
+    }
+
+    /**
+     * Return the DOMXPath query string used to retrieve the editability
+     * can comment value from the results
+     *
+     * @return string
+     */
+    protected function getEditabilityCanCommentQuery()
+    {
+        return $this->editabilityCanCommentQuery;
     }
 
     /**
@@ -560,11 +889,29 @@ class PhotoResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResu
     }
 
     /**
-     * @todo to be implemented
+     * Return the media value
+     *
+     * @return string|null
      */
     public function getMedia()
     {
+        if (! isset($this->media)) {
+            $this->media = (($nodeList = $this->getDomXPath($this->getDomDocument())->query($this->getMediaQuery())) && $nodeList->length)
+                ? $nodeList->item(0)->value
+                : null;
+        }
+        return $this->media;
+    }
 
+    /**
+     * Return the DOMXPath query string used to retrieve the media value from
+     * the results
+     *
+     * @return string
+     */
+    protected function getMediaQuery()
+    {
+        return $this->mediaQuery;
     }
 
     /**
@@ -831,23 +1178,75 @@ class PhotoResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResu
      */
     public function getPeopleHasPeople()
     {
-
+        if (! isset($this->peopleHasPeople)) {
+            $this->peopleHasPeople = (($nodeList = $this->getDomXPath($this->getDomDocument())->query($this->getPeopleHasPeopleQuery())) && $nodeList->length)
+                ? $nodeList->item(0)->value
+                : null;
+        }
+        return $this->peopleHasPeople;
     }
 
     /**
-     * @todo to be implemented
+     * Return the DOMXPath query string used to retrieve the people has people
+     * value from the results
+     *
+     * @return string
+     */
+    protected function getPeopleHasPeopleQuery()
+    {
+        return $this->peopleHasPeopleQuery;
+    }
+
+    /**
+     * Return the public editability can add meta value
+     *
+     * @return string|null
      */
     public function getPublicEditabilityCanAddMeta()
     {
-
+        if (! isset($this->publicEditabilityCanAddMeta)) {
+            $this->publicEditabilityCanAddMeta = (($nodeList = $this->getDomXPath($this->getDomDocument())->query($this->getPublicEditabilityCanAddMetaQuery())) && $nodeList->length)
+                ? $nodeList->item(0)->value
+                : null;
+        }
+        return $this->publicEditabilityCanAddMeta;
     }
 
     /**
-     * @todo to be implemented
+     * Return the DOMXPath query string used to retrieve the public
+     * editability can add meta value from the results
+     *
+     * @return string
+     */
+    protected function getPublicEditabilityCanAddMetaQuery()
+    {
+        return $this->publicEditabilityCanAddMetaQuery;
+    }
+
+    /**
+     * Return the public editability can comment value
+     *
+     * @return string|null
      */
     public function getPublicEditabilityCanComment()
     {
+        if (! isset($this->publicEditabilityCanComment)) {
+            $this->publicEditabilityCanComment = (($nodeList = $this->getDomXPath($this->getDomDocument())->query($this->getPublicEditabilityCanCommentQuery())) && $nodeList->length)
+                ? $nodeList->item(0)->value
+                : null;
+        }
+        return $this->publicEditabilityCanComment;
+    }
 
+    /**
+     * Return the DOMXPath query string used to retrieve the public editability
+     * can comment value from the results
+     *
+     * @return string
+     */
+    protected function getPublicEditabilityCanCommentQuery()
+    {
+        return $this->publicEditabilityCanCommentQuery;
     }
 
     /**
@@ -970,6 +1369,17 @@ class PhotoResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResu
     }
 
     /**
+     * Return the DOMXPath query string used to retrieve the tags value from
+     * the results
+     *
+     * @return string|null
+     */
+    protected function getTagsQuery()
+    {
+        return $this->tagsQuery;
+    }
+
+        /**
      * Return the title property from the results
      *
      * @return string|null
@@ -996,12 +1406,31 @@ class PhotoResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResu
     }
 
     /**
-     * @todo to be implemented
+     * Return an instance of UrlsResultSetAdapter
+     *
+     * @return \MphpFlickrPhotosGetInfo\Adapter\Xml\ResultSet\UrlsResultSetAdapter|null
      */
     public function getUrls()
     {
-
+        // constructor requires results and parameters
+        if (! isset($this->urlsResultSetAdapter)) {
+            $this->urlssResultSetAdapter = (($nodeList = $this->getDomXpath($this->getDomDocument())->query($this->getUrlsQuery())) && $nodeList->length)
+                ? new \MphpFlickrPhotosGetInfo\Adapter\Xml\ResultSet\UrlsResultSetAdapter($nodeList->item(0)->ownerDocument->saveXml($nodeList->item(0)), $this->getParameters())
+                : null;
+        }
+        return $this->urlsResultSetAdapter;
     }
+
+    /**
+     * Return the DOMXPath query string used to retrieve the urls from the results
+     *
+     * @return string
+     */
+    protected function getUrlsQuery()
+    {
+        return $this->urlsQuery;
+    }
+
 
     /**
      * @todo to be implemented
