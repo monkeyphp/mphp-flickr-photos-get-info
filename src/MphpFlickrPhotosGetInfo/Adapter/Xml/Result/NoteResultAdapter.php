@@ -146,7 +146,7 @@ class NoteResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResul
     public function getAuthorName()
     {
         if (! isset($this->authorName)) {
-            $this->authorName= (($nodeList = $this->getDomXPath($this->getDomDocument())->query($this->getAuthorNameQuery())) && $nodeList->length)
+            $this->authorName = (($nodeList = $this->getDomXPath($this->getDomDocument())->query($this->getAuthorNameQuery())) && $nodeList->length)
                 ? $nodeList->item(0)->value
                 : null;
         }
@@ -286,7 +286,7 @@ class NoteResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResul
     /**
      * Return the DOMXPath query string used to retrieve the w value from the
      * results
-     * 
+     *
      * @return string
      */
     protected function getWQuery()
