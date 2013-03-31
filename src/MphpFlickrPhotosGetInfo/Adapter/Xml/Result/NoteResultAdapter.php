@@ -24,39 +24,125 @@ namespace MphpFlickrPhotosGetInfo\Adapter\Xml\Result;
 class NoteResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResultAdapter implements \MphpFlickrPhotosGetInfo\Adapter\Interfaces\Result\NoteResultAdapterInterface
 {
 
+    /**
+     * The author of the note
+     *
+     * @var string|null
+     */
     protected $authorName;
 
+    /**
+     * DOMXPath query srring used to retrieve the author name from the results
+     *
+     * @var string
+     */
     protected $authorNameQuery = '//note/@authorname';
 
+    /**
+     * The author nsid value
+     *
+     * @var string
+     */
     protected $authorNsid;
 
+    /**
+     * DOMXPath query string used to retrieve the author nsid value from the
+     * results
+     *
+     * @var string
+     */
     protected $authorNsidQuery = '//note/@author';
 
+    /**
+     * The h value of the note
+     *
+     * @var string|null
+     */
     protected $h;
 
+    /**
+     * DOMXPath query string used to retrieve the h value from the results
+     *
+     * @var string
+     */
     protected $hQuery = '//note/@h';
 
+    /**
+     * The id value of the note
+     *
+     * @var srring|null
+     */
     protected $id;
 
+    /**
+     * DOMXPath query string used to retrieve the id value from the results
+     *
+     * @var sring
+     */
     protected $idQuery = '//note/@id';
 
+    /**
+     * The actual textual value of the note
+     *
+     * @var string|null
+     */
     protected $note;
 
+    /**
+     * DOMXPath query string used to retrieve the actual note value from the
+     * results
+     *
+     * @var string|null
+     */
     protected $noteQuery = '//note';
 
+    /**
+     * The w value of the note
+     *
+     * @var string|null
+     */
     protected $w;
 
+    /**
+     * DOMXPath query string used to retrieve the w value from the results
+     *
+     * @var string
+     */
     protected $wQuery = '//note/@w';
 
+    /**
+     * The x value of the note
+     *
+     * @var string|null
+     */
     protected $x;
 
+    /**
+     * DOMXPath query string used to retrieve the x value from the results
+     *
+     * @var string
+     */
     protected $xQuery = '//note/@x';
 
+    /**
+     * The y value of the note
+     *
+     * @var string|null
+     */
     protected $y;
 
+    /**
+     * DOMXPath query string used to retrieve the y value from the results
+     *
+     * @var string
+     */
     protected $yQuery ='//note/@y';
 
-
+    /**
+     * Return the author name
+     *
+     * @return string|null
+     */
     public function getAuthorName()
     {
         if (! isset($this->authorName)) {
@@ -67,11 +153,22 @@ class NoteResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResul
         return $this->authorName;
     }
 
+    /**
+     * Return the DOMXPath query string used to retrieve the author name value
+     * from the results
+     *
+     * @return string
+     */
     protected function getAuthorNameQuery()
     {
         return $this->authorNameQuery;
     }
 
+    /**
+     * Return the author nsid value
+     *
+     * @return string|null
+     */
     public function getAuthorNsid()
     {
         if (! isset($this->authorNsid)) {
@@ -82,11 +179,22 @@ class NoteResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResul
         return $this->authorNsid;
     }
 
+    /**
+     * Return the DOMXPath query string used to retrieve the author nsid value
+     * from the results
+     *
+     * @return string
+     */
     protected function getAuthorNsidQuery()
     {
         return $this->authorNsidQuery;
     }
 
+    /**
+     * Return the h value
+     *
+     * @return string|null
+     */
     public function getH()
     {
         if (! isset($this->h)) {
@@ -97,11 +205,22 @@ class NoteResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResul
         return $this->h;
     }
 
+    /**
+     * Return the DOMXPath query string used to retrieve the h value from the
+     * results
+     *
+     * @return string
+     */
     protected function getHQuery()
     {
         return $this->hQuery;
     }
 
+    /**
+     * Return the id value
+     *
+     * @return string|null
+     */
     public function getId()
     {
         if (! isset($this->id)) {
@@ -112,11 +231,22 @@ class NoteResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResul
         return $this->id;
     }
 
+    /**
+     * Return the DOMXPath query string used to retrieve the id value from the
+     * results
+     *
+     * @return string
+     */
     protected function getIdQuery()
     {
         return $this->idQuery;
     }
 
+    /**
+     * Return the note value
+     *
+     * @return string|null
+     */
     public function getNote()
     {
         if (! isset($this->note)) {
@@ -127,11 +257,22 @@ class NoteResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResul
         return $this->note;
     }
 
+    /**
+     * Return the DOMXPath query string used to retrieve the note value from the
+     * results
+     *
+     * @return string
+     */
     protected function getNoteQuery()
     {
         return $this->noteQuery;
     }
 
+    /**
+     * Return the w value
+     *
+     * @return string|null
+     */
     public function getW()
     {
         if (! isset($this->w)) {
@@ -142,11 +283,22 @@ class NoteResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResul
         return $this->w;
     }
 
+    /**
+     * Return the DOMXPath query string used to retrieve the w value from the
+     * results
+     * 
+     * @return string
+     */
     protected function getWQuery()
     {
         return $this->wQuery;
     }
 
+    /**
+     * Return the x value
+     *
+     * @return string|null
+     */
     public function getX()
     {
         if (! isset($this->x)) {
@@ -157,11 +309,22 @@ class NoteResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResul
         return $this->x;
     }
 
+    /**
+     * Return the DOMXPath query string used to retrieve the x value from the
+     * results
+     *
+     * @return string
+     */
     protected function getXQuery()
     {
         return $this->xQuery;
     }
 
+    /**
+     * Return the y value
+     *
+     * @return string|null
+     */
     public function getY()
     {
         if (! isset($this->y)) {
@@ -172,6 +335,12 @@ class NoteResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResul
         return $this->y;
     }
 
+    /**
+     * Return the DOMXPath query string used to retrieve the y value from the
+     * results
+     *
+     * @return string
+     */
     protected function getYQuery()
     {
         return $this->yQuery;
