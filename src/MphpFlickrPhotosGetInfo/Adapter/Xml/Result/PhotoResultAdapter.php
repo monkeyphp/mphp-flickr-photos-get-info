@@ -1489,7 +1489,7 @@ class PhotoResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResu
     {
         // constructor requires results and parameters
         if (! isset($this->urlsResultSetAdapter)) {
-            $this->urlssResultSetAdapter = (($nodeList = $this->getDomXpath($this->getDomDocument())->query($this->getUrlsQuery())) && $nodeList->length)
+            $this->urlsResultSetAdapter = (($nodeList = $this->getDomXpath($this->getDomDocument())->query($this->getUrlsQuery())) && $nodeList->length)
                 ? new \MphpFlickrPhotosGetInfo\Adapter\Xml\ResultSet\UrlsResultSetAdapter($nodeList->item(0)->ownerDocument->saveXml($nodeList->item(0)), $this->getParameters())
                 : null;
         }
