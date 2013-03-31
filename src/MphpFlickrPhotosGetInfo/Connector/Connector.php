@@ -12,7 +12,7 @@
 namespace MphpFlickrPhotosGetInfo\Connector;
 
 /**
- * Description of Connector
+ * Connector
  *
  * @category   MphpFlickrPhotosGetInfo
  * @package    MphpFlickrPhotosGetInfo
@@ -26,14 +26,14 @@ class Connector extends \MphpFlickrBase\Connector\AbstractConnector
      *
      * @var string
      */
-    protected $method = 'flickr.photos.search';
+    protected $method = 'flickr.photos.getInfo';
 
     /**
      * The name of the adapter class that a call to dispatch should return
      *
      * @var string
      */
-    protected $resultAdapterClass = 'MphpFlickrPhotosGetInfo\Adapter\Result\PhotoResult';
+    protected $resultAdapterClass = 'MphpFlickrPhotosGetInfo\Result\PhotoResult';
 
     /**
      *

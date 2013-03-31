@@ -26,214 +26,410 @@ use PHPUnit_Framework_TestCase;
 class ResultTest extends PHPUnit_Framework_TestCase
 {
 
+    /**
+     * Test that we can construct an instance
+     */
     public function test__construct()
     {
-        $adapter = $this->getMock('MphpFlickrPhotosGetInfo\Adapter\Xml\Result\PhotoResultAdapter', array(), array(), 'Adapter', false);
-
-        $parameters = array();
-        $result = new PhotoResult($adapter);
-
-        $this->assertSame($adapter, $result->getAdapter());
+        $photoResult = new PhotoResult($this->getAdapter());
+        $this->assertSame($this->getAdapter(), $photoResult->getAdapter());
     }
 
+    /**
+     * Test that attempting to construct with an invalid adapter throws an
+     * InvalidAdapterException
+     *
+     * @expectedException MphpFlickrBase\Exception\InvalidAdapterException
+     */
+    public function test__constructThrowsInvalidAdapterException()
+    {
+        $mockAdapter = $this->getMock('MphpFlickrBase\Adapter\Interfaces\Result\ResultAdapterInterface');
+        $this->assertInstanceOf('MphpFlickrBase\Adapter\Interfaces\Result\ResultAdapterInterface', $mockAdapter);
+        $this->assertNotInstanceOf('MphpFlickrPhotosGetInfo\Adapter\Interfaces\Result\PhotoResultAdapterInterface', $mockAdapter);
+
+        $photoResult = new \MphpFlickrPhotosGetInfo\Result\PhotoResult($mockAdapter);
+    }
+    /**
+     * Test that we can retrieve the id value
+     */
     public function testGetId()
     {
-        $adapter = new PhotoResultAdapter($this->getResults(), $this->getParameters());
-        $result = new PhotoResult($adapter);
-        $this->assertSame($adapter->getId(), $result->getId());
+        $photoResult = new PhotoResult($this->getAdapter());
+        $this->assertSame($this->getAdapter()->getId(), $photoResult->getId());
     }
 
+    /**
+     * Test that we can retrieve the secret
+     */
     public function testGetSecret()
     {
-        $adapter = new PhotoResultAdapter($this->getResults(), $this->getParameters());
-        $result = new PhotoResult($adapter);
-        $this->assertSame($adapter->getSecret(), $result->getSecret());
+        $photoResult = new PhotoResult($this->getAdapter());
+        $this->assertSame($this->getAdapter()->getSecret(), $photoResult->getSecret());
     }
 
+    /**
+     * Test that we can retrieve the server value
+     */
     public function testGetServer()
     {
-        $adapter = new PhotoResultAdapter($this->getResults(), $this->getParameters());
-        $result = new PhotoResult($adapter);
-        $this->assertSame($adapter->getServer(), $result->getServer());
+        $photoResult = new PhotoResult($this->getAdapter());
+        $this->assertSame($this->getAdapter()->getServer(), $photoResult->getServer());
     }
 
+    /**
+     * Test that we can retrieve the farm value
+     */
     public function testGetFarm()
     {
-        $adapter = new PhotoResultAdapter($this->getResults(), $this->getParameters());
-        $result = new PhotoResult($adapter);
-        $this->assertSame($adapter->getFarm(), $result->getFarm());
+        $photoResult = new PhotoResult($this->getAdapter());
+        $this->assertSame($this->getAdapter()->getFarm(), $photoResult->getFarm());
     }
 
+    /**
+     * Test that we can retrieve the date uploaded value and that it returns
+     * a DateTime instance
+     */
     public function testGetDateUploaded()
     {
-        $adapter = new PhotoResultAdapter($this->getResults(), $this->getParameters());
-        $result = new PhotoResult($adapter);
-
-        $this->assertInstanceOf('DateTime', $result->getDateUploaded());
+        $photoResult = new PhotoResult($this->getAdapter());
+        $this->assertInstanceOf('DateTime', $photoResult->getDateUploaded());
     }
 
+    /**
+     * Test that we can retrieve the is favorite value and it returns a boolean
+     */
     public function testIsFavorite()
     {
-        $adapter = new PhotoResultAdapter($this->getResults(), $this->getParameters());
-        $result = new PhotoResult($adapter);
-
-        $this->assertFalse($result->getIsFavorite());
+        $photoResult = new PhotoResult($this->getAdapter());
+        $this->assertFalse($photoResult->getIsFavorite());
     }
 
+    /**
+     * Test that we can retrieve the license value
+     */
     public function testGetLicense()
     {
-        $adapter = new PhotoResultAdapter($this->getResults(), $this->getParameters());
-        $result = new PhotoResult($adapter);
-
-        $this->markTestIncomplete();
+        $photoResult = new PhotoResult($this->getAdapter());
+        $this->assertSame($this->getAdapter()->getLicense(), $photoResult->getLicense());
     }
 
+    /**
+     * Test that we can retrieve the safety level value
+     */
     public function testGetSafetyLevel()
     {
-        $adapter = new PhotoResultAdapter($this->getResults(), $this->getParameters());
-        $result = new PhotoResult($adapter);
-
-        $this->markTestIncomplete();
+        $photoResult = new PhotoResult($this->getAdapter());
+        $this->assertSame($this->getAdapter()->getSafetyLevel(), $photoResult->getSafetyLevel());
     }
 
+    /**
+     * Test that we can retrieve the rotation value
+     */
     public function testGetRotation()
     {
-        $adapter = new PhotoResultAdapter($this->getResults(), $this->getParameters());
-        $result = new PhotoResult($adapter);
-
-        $this->assertEquals($adapter->getRotation(), $result->getRotation());
+        $photoResult = new PhotoResult($this->getAdapter());
+        $this->assertEquals($this->getAdapter()->getRotation(), $photoResult->getRotation());
     }
 
+    /**
+     * Test that we can retrieve the original secret value
+     */
     public function testGetOriginalSecret()
     {
-        $adapter = new PhotoResultAdapter($this->getResults(), $this->getParameters());
-        $result = new PhotoResult($adapter);
-
-        $this->assertSame($result->getOriginalSecret(), $adapter->getOriginalSecret());
+        $photoResult = new PhotoResult($this->getAdapter());
+        $this->assertSame($this->getAdapter()->getOriginalSecret(), $photoResult->getOriginalSecret());
     }
 
+    /**
+     * Test that we can retrieve the original format value
+     */
     public function testGetOriginalFormat()
     {
-        $adapter = new PhotoResultAdapter($this->getResults(), $this->getParameters());
-        $result = new PhotoResult($adapter);
-
-        $this->assertSame($result->getOriginalFormat(), $adapter->getOriginalFormat());
+        $photoResult = new PhotoResult($this->getAdapter());
+        $this->assertSame($this->getAdapter()->getOriginalFormat(), $photoResult->getOriginalFormat());
     }
 
+    /**
+     * Test that we can retrieve the views value
+     */
     public function testGetViews()
     {
-        $this->markTestIncomplete();
+        $photoResult = new PhotoResult($this->getAdapter());
+        $this->assertSame($this->getAdapter()->getViews(), $photoResult->getViews());
     }
 
+    /**
+     * Test that we can retrieve the media value
+     */
     public function testGetMedia()
     {
-        $this->markTestIncomplete();
+        $photoResult = new PhotoResult($this->getAdapter());
+        $this->assertSame($this->getAdapter()->getMedia(), $photoResult->getMedia());
     }
 
+    /**
+     * Test that we can retrieve the owner nsid value
+     */
     public function testGetOwnerNsid()
     {
-        $adapter = new PhotoResultAdapter($this->getResults(), $this->getParameters());
-        $result = new PhotoResult($adapter);
-
-        $this->assertSame($result->getOwnerNsid(), $adapter->getOwnerNsid());
+        $photoResult = new PhotoResult($this->getAdapter());
+        $this->assertSame($this->getAdapter()->getOwnerNsid(), $photoResult->getOwnerNsid());
     }
 
+    /**
+     * Test that we can retrieve the owner username value
+     */
     public function testGetOwnerUsername()
     {
-        $adapter = new PhotoResultAdapter($this->getResults(), $this->getParameters());
-        $result = new PhotoResult($adapter);
-
-        $this->assertSame($result->getOwnerUsername(), $adapter->getOwnerUsername());
+        $photoResult = new PhotoResult($this->getAdapter());
+        $this->assertSame($this->getAdapter()->getOwnerUsername(), $photoResult->getOwnerUsername());
     }
 
+    /**
+     * Test that we can retrieve the owner realname value
+     */
     public function testGetOwnerRealname()
     {
-        $adapter = new PhotoResultAdapter($this->getResults(), $this->getParameters());
-        $result = new PhotoResult($adapter);
-
-        $this->assertSame($result->getOwnerRealname(), $adapter->getOwnerRealname());
+        $photoResult = new PhotoResult($this->getAdapter());
+        $this->assertSame($this->getAdapter()->getOwnerRealname(), $photoResult->getOwnerRealname());
     }
 
+    /**
+     * Test that we can retrieve the owner location value
+     */
     public function testGetOwnerLocation()
     {
-        $adapter = new PhotoResultAdapter($this->getResults(), $this->getParameters());
-        $result = new PhotoResult($adapter);
-
-        $this->assertSame($result->getOwnerLocation(), $adapter->getOwnerLocation());
+        $photoResult = new PhotoResult($this->getAdapter());
+        $this->assertSame($this->getAdapter()->getOwnerLocation(), $photoResult->getOwnerLocation());
     }
 
+    /**
+     * Test that we can retrieve the owner icon server value
+     */
     public function testGetOwnerIconServer()
     {
-        $adapter = new PhotoResultAdapter($this->getResults(), $this->getParameters());
-        $result = new PhotoResult($adapter);
-
-        $this->assertSame($result->getOwnerIconServer(), $adapter->getOwnerIconServer());
+        $photoResult = new PhotoResult($this->getAdapter());
+        $this->assertSame($this->getAdapter()->getOwnerIconServer(), $photoResult->getOwnerIconServer());
     }
 
+    /**
+     * Test that we can retrieve the owner icon farm value
+     */
     public function testGetOwnerIconFarm()
     {
-        $adapter = new PhotoResultAdapter($this->getResults(), $this->getParameters());
-        $result = new PhotoResult($adapter);
-
-        $this->assertSame($result->getOwnerIconFarm(), $adapter->getOwnerIconFarm());
+       $photoResult = new PhotoResult($this->getAdapter());
+        $this->assertSame($this->getAdapter()->getOwnerIconFarm(), $photoResult->getOwnerIconFarm());
     }
 
+    /**
+     * Test that we can retrieve the owner path alias value
+     */
     public function testGetOwnerPathAlias()
     {
-        $adapter = new PhotoResultAdapter($this->getResults(), $this->getParameters());
-        $result = new PhotoResult($adapter);
-
-        $this->assertSame($result->getOwnerPathAlias(), $adapter->getOwnerPathAlias());
+        $photoResult = new PhotoResult($this->getAdapter());
+        $this->assertSame($this->getAdapter()->getOwnerPathAlias(), $photoResult->getOwnerPathAlias());
     }
 
+    /**
+     * Test that we can retrieve the title value
+     */
     public function testGetTitle()
     {
-        $adapter = new PhotoResultAdapter($this->getResults(), $this->getParameters());
-        $result = new PhotoResult($adapter);
-
-        $this->assertSame($result->getTitle(), $adapter->getTitle());
+        $photoResult = new PhotoResult($this->getAdapter());
+        $this->assertSame($this->getAdapter()->getTitle(), $photoResult->getTitle());
     }
 
+    /**
+     * Test that we can retrieve the description value
+     */
     public function testGetDescription()
     {
-        $adapter = new PhotoResultAdapter($this->getResults(), $this->getParameters());
-        $result = new PhotoResult($adapter);
-
-        $this->assertSame($result->getDescription(), $adapter->getDescription());
+        $photoResult = new PhotoResult($this->getAdapter());
+        $this->assertSame($this->getAdapter()->getDescription(), $photoResult->getDescription());
     }
 
+    /**
+     * Test that we can retrieve the visibility is public value
+     */
+    public function testGetVisibilityIsPublic()
+    {
+        $photoResult = new PhotoResult($this->getAdapter());
+        $this->assertEquals($this->getAdapter()->getVisibilityIsPublic(), $photoResult->getVisibilityIsPublic());
+    }
+
+    /**
+     * Test that we can retrieve the visbility is friend value
+     */
+    public function testGetVisibilityIsFriend()
+    {
+        $photoResult = new PhotoResult($this->getAdapter());
+        $this->assertFalse($photoResult->getVisibilityIsFriend());
+    }
+
+    /**
+     * Test that we can retrieve the visibility is family value
+     */
+    public function testGetVisibilityIsFamily()
+    {
+        $photoResult = new PhotoResult($this->getAdapter());
+        $this->assertFalse($photoResult->getVisibilityIsFamily());
+    }
+
+    /**
+     * Test that we can retrieve the dates posted value
+     */
     public function testGetDatesPosted()
     {
-        $adapter = new PhotoResultAdapter($this->getResults(), $this->getParameters());
-        $result = new PhotoResult($adapter);
-
-        $this->assertInstanceOf('DateTime', $result->getDatesPosted());
+        $photoResult = new PhotoResult($this->getAdapter());
+        $this->assertInstanceOf('DateTime', $photoResult->getDatesPosted());
     }
 
+    /**
+     * Test that we can retrieve the dates taken value
+     */
     public function testGetDatesTaken()
     {
-        $adapter = new PhotoResultAdapter($this->getResults(), $this->getParameters());
-        $result = new PhotoResult($adapter);
-
-        $this->assertInstanceOf('DateTime', $result->getDatesTaken());
+        $photoResult = new PhotoResult($this->getAdapter());
+        $this->assertInstanceOf('DateTime', $photoResult->getDatesTaken());
     }
 
+    /**
+     * Test that we can retrieve the dates taken granularity
+     */
+    public function testGetDatesTakenGranularity()
+    {
+        $photoResult = new PhotoResult($this->getAdapter());
+        $this->assertSame($this->getAdapter()->getDatesTakenGranularity(), $photoResult->getDatesTakenGranularity());
+    }
 
+    /**
+     * Test that we can retrieve the dates taken last update value
+     */
     public function testGetDatesTakenLastUpdate()
     {
-        $adapter = new PhotoResultAdapter($this->getResults(), $this->getParameters());
-        $result = new PhotoResult($adapter);
-
-        $this->assertInstanceOf('DateTime', $result->getDatesTakenLastUpdate());
+        $photoResult = new PhotoResult($this->getAdapter());
+        $this->assertInstanceOf('DateTime', $photoResult->getDatesTakenLastUpdate());
     }
 
+    /**
+     * Test that we can retrieve the editability can comment value
+     */
+    public function testGetEditabilityCanComment()
+    {
+        $photoResult = new PhotoResult($this->getAdapter());
+        $this->assertFalse($photoResult->getEditabilityCanComment());
+    }
 
+    /**
+     * Test that we can retrieve the editability can add meta value
+     */
+    public function testGetEditabilityCanAddMeta()
+    {
+        $photoResult = new PhotoResult($this->getAdapter());
+        $this->assertFalse($photoResult->getEditabilityCanAddMeta());
+    }
 
+    /**
+     * Test that we can retrieve the public editability can comment value
+     */
+    public function testGetPublicEditabilityCanComment()
+    {
+        $photoResult = new PhotoResult($this->getAdapter());
+        $this->assertTrue($photoResult->getPublicEditabilityCanComment());
+        $this->assertInternalType('boolean', $photoResult->getPublicEditabilityCanComment());
+    }
+
+    /**
+     * Test that we can retrieve the public editability can add meta value
+     */
+    public function testGetPublicEditabilityCanAddMeta()
+    {
+        $photoResult = new PhotoResult($this->getAdapter());
+        $this->assertFalse($photoResult->getPublicEditabilityCanAddMeta());
+        $this->assertInternalType('boolean', $photoResult->getPublicEditabilityCanAddMeta());
+    }
+
+    public function testGetUsageCanBlog()
+    {
+        $photoResult = new PhotoResult($this->getAdapter());
+        $this->assertFalse($photoResult->getUsageCanBlog());
+    }
+
+    public function testGetUsageCanPrint()
+    {
+        $photoResult = new PhotoResult($this->getAdapter());
+        $this->assertFalse($photoResult->getUsageCanPrint());
+    }
+
+    public function testGetUsageCanShare()
+    {
+        $photoResult = new PhotoResult($this->getAdapter());
+        $this->assertTrue($photoResult->getUsageCanShare());
+    }
+
+    public function testGetUsageCanDownload()
+    {
+        $photoResult = new PhotoResult($this->getAdapter());
+        $this->assertTrue($photoResult->getUsageCanDownload());
+    }
+
+    public function testGetPeopleHasPeople()
+    {
+        $photoResult = new PhotoResult($this->getAdapter());
+        $this->assertFalse($photoResult->getPeopleHasPeople());
+    }
+
+    public function testGetNotes()
+    {
+        $photoResult = new PhotoResult($this->getAdapter());
+        $this->assertInstanceOf('MphpFlickrPhotosGetInfo\ResultSet\NotesResultSet', $photoResult->getNotes());
+    }
+
+    public function testGetTags()
+    {
+        $photoResult = new PhotoResult($this->getAdapter());
+        $this->assertInstanceOf('MphpFlickrPhotosGetInfo\ResultSet\TagsResultSet', $photoResult->getTags());
+    }
+
+    public function testGetUrls()
+    {
+        $photoResult = new PhotoResult($this->getAdapter());
+        $this->assertInstanceOf('MphpFlickrPhotosGetInfo\ResultSet\UrlsResultSet', $photoResult->getUrls());
+    }
+
+    public function testGetComments()
+    {
+        $photoResult = new PhotoResult($this->getAdapter());
+        $this->assertEquals(0, $photoResult->getComments());
+    }
+    /**
+     * Helper method
+     *
+     * @return \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\PhotoResultAdapter
+     */
+    protected function getAdapter()
+    {
+        if (! isset($this->adapter)) {
+            $this->adapter = new \MphpFlickrPhotosGetInfo\Adapter\Xml\Result\PhotoResultAdapter($this->getResults(), $this->getParameters());
+        }
+        return $this->adapter;
+    }
+
+    /**
+     * Helper method
+     *
+     * @return array
+     */
     protected function getParameters()
     {
         return array('api_key' => '0123456789', 'method' => 'flick.photos.getInfo', 'photo_id' => '8558949624');
     }
 
+    /**
+     * Helper method
+     *
+     * @return string
+     */
     protected function getResults()
     {
         return '<?xml version="1.0" encoding="utf-8" ?>
@@ -248,7 +444,9 @@ class ResultTest extends PHPUnit_Framework_TestCase
                     <publiceditability cancomment="1" canaddmeta="0" />
                     <usage candownload="1" canblog="0" canprint="0" canshare="1" />
                     <comments>0</comments>
-                    <notes />
+                    <notes>
+                        <note id="313" author="12037949754@N01" authorname="Bees" x="10" y="10" w="50" h="50">foo</note>
+                    </notes>
                     <people haspeople="0" />
                     <tags>
                       <tag id="65443655-8558949624-75862" author="65448995@N05" raw="1961" machine_tag="0">1961</tag>

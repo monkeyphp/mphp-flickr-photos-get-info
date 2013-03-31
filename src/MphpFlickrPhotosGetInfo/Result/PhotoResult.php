@@ -33,7 +33,7 @@ class PhotoResult extends \MphpFlickrBase\Result\AbstractResult
         if ($adapter instanceof \MphpFlickrPhotosGetInfo\Adapter\Interfaces\Result\PhotoResultAdapterInterface) {
             return parent::setAdapter($adapter);
         }
-        throw new \InvalidArgumentException('Invalid adapter supplied');
+        throw new \MphpFlickrBase\Exception\InvalidAdapterException('Invalid adapter supplied');
     }
 
     /**
@@ -91,7 +91,7 @@ class PhotoResult extends \MphpFlickrBase\Result\AbstractResult
     /**
      * Return the is favourite value of the Photo
      *
-     * @return string|null
+     * @return boolean|null
      */
     public function getIsFavorite()
     {
@@ -267,17 +267,24 @@ class PhotoResult extends \MphpFlickrBase\Result\AbstractResult
      */
     public function getVisibilityIsPublic()
     {
-        return $this->getAdapter()->getVisibilityIsPublic();
+        return (null !== ($visibilityIsPublic = ($this->getAdapter()->getVisibilityIsPublic())))
+            ? (boolean)$visibilityIsPublic
+            : null;
     }
+
 
     public function getVisibilityIsFriend()
     {
-        return $this->getAdapter()->getVisibilityIsFriend();
+        return (null !== ($visibilityIsFriend = ($this->getAdapter()->getVisibilityIsFriend())))
+            ? (boolean)$visibilityIsFriend
+            : null;
     }
 
     public function getVisibilityIsFamily()
     {
-        return $this->getAdapter()->getVisibilityIsFamily();
+        return (null !== ($visibilityIsFamily = ($this->getAdapter()->getVisibilityIsFamily())))
+            ? (boolean)$visibilityIsFamily
+            : null;
     }
 
     /**
@@ -304,12 +311,17 @@ class PhotoResult extends \MphpFlickrBase\Result\AbstractResult
             : null;
     }
 
+    /**
+     *
+     * @return string|null
+     */
     public function getDatesTakenGranularity()
     {
         return $this->getAdapter()->getDatesTakenGranularity();
     }
 
     /**
+     * Return a DateTime instance representing the dates taken last update value
      *
      * @return \DateTime|null
      */
@@ -320,74 +332,97 @@ class PhotoResult extends \MphpFlickrBase\Result\AbstractResult
             : null;
     }
 
+    /**
+     * Return the editability can comment value
+     *
+     * @return boolean|null
+     */
     public function getEditabilityCanComment()
     {
-        return $this->getAdapter()->getEditabilityCanComment();
+        return (null !== ($editabilityCanComment = ($this->getAdapter()->getEditabilityCanComment())))
+            ? (boolean)$editabilityCanComment
+            : null;
     }
 
     public function getEditabilityCanAddMeta()
     {
-        return $this->getAdapter()->getEditabilityCanAddMeta();
+        return (null !== ($editabilityCanAddMeta = ($this->getAdapter()->getEditabilityCanAddMeta())))
+            ? (boolean)$editabilityCanAddMeta
+            : null;
     }
 
     public function getPublicEditabilityCanComment()
     {
-        return $this->getAdapter()->getPublicEditabilityCanComment();
+        return (null !== ($publicEditabilityCanComment = ($this->getAdapter()->getPublicEditabilityCanComment())))
+            ? (boolean)$publicEditabilityCanComment
+            : null;
     }
 
     public function getPublicEditabilityCanAddMeta()
     {
-        return $this->getAdapter()->getPublicEditabilityCanAddMeta();
+        return (null !== ($publicEditabilityCanComment = ($this->getAdapter()->getPublicEditabilityCanAddMeta())))
+            ? (boolean)$publicEditabilityCanComment
+            : null;
     }
 
     /**
      * Return the usage can download of the Photo
      *
-     * @return string|null
+     * @return boolean|null
      */
     public function getUsageCanDownload()
     {
-        return $this->getAdapter()->getUsageCanDownload();
+        return (null !== ($usageCanDownload = ($this->getAdapter()->getUsageCanDownload())))
+            ? (boolean)$usageCanDownload
+            : null;
     }
 
     /**
      * Return the usage can blog of the Photo
      *
-     * @return string|null
+     * @return boolean|null
      */
     public function getUsageCanBlog()
     {
-        return $this->getAdapter()->getUsageCanBlog();
+        return (null !== ($usageCanBlog = ($this->getAdapter()->getUsageCanBlog())))
+            ? (boolean)$usageCanBlog
+            : null;
     }
 
     /**
      * Return the usage can print of the Photo
      *
-     * @return string|null
+     * @return boolean|null
      */
     public function getUsageCanPrint()
     {
-        return $this->getAdapter()->getUsageCanPrint();
+        return (null !== ($usageCanPrint = ($this->getAdapter()->getUsageCanPrint())))
+            ? (boolean)$usageCanPrint
+            : null;
     }
 
     /**
      * Return the usage can share of the Photo
      *
-     * @return string|null
+     * @return boolean|null
      */
     public function getUsageCanShare()
     {
-        return $this->getAdapter()->getUsageCanShare();
+        return (null !== ($usageCanShare = ($this->getAdapter()->getUsageCanShare())))
+            ? (boolean)$usageCanShare
+            : null;
     }
 
     /**
      * Return the number of Comments associated with the Photo
      *
-     * @return string|null
+     * @return boolean|null
      */
     public function getComments()
     {
-        return $this->getAdapter()->getComments();
+        return (null !== ($comments = ($this->getAdapter()->getComments())))
+            ? (integer)$comments
+            : null;
     }
 
     /**
@@ -405,31 +440,37 @@ class PhotoResult extends \MphpFlickrBase\Result\AbstractResult
     /**
      * Return if the people has people of the Photo
      *
-     * @return string|null
+     * @return boolean|null
      */
     public function getPeopleHasPeople()
     {
-        return $this->getAdapter()->getPeopleHasPeople();
+        return (null !== ($peopleHasPeople = ($this->getAdapter()->getPeopleHasPeople())))
+            ? (boolean)$peopleHasPeople
+            : null;
     }
 
     /**
      * Return a traversable list of Tags of the Photo
      *
-     * @return \Traversable
+     * @return \MphpFlickrPhotosGetInfo\ResultSet\TagsResultSet|null
      */
     public function getTags()
     {
-        return $this->getAdapter()->getTags();
+        return (null !== ($tagsResultSetAdapter = $this->getAdapter()->getTags()))
+            ? new \MphpFlickrPhotosGetInfo\ResultSet\TagsResultSet($tagsResultSetAdapter)
+            : null;
     }
 
     /**
      * Return a traversable list of the urls of the Photo
      *
-     * @return \Traversable
+     * @return \MphpFlickrPhotosGetInfo\ResultSet\UrlsResultSet|null
      */
     public function getUrls()
     {
-        return $this->getAdapter()->getUrls();
+        return (null !== ($urlsResultSetAdapter = $this->getAdapter()->getUrls()))
+            ? new \MphpFlickrPhotosGetInfo\ResultSet\UrlsResultSet($urlsResultSetAdapter)
+            : null;
     }
 
 }
