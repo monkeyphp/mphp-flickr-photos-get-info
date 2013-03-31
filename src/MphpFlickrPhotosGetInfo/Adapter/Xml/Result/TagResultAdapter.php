@@ -14,6 +14,8 @@ namespace MphpFlickrPhotosGetInfo\Adapter\Xml\Result;
 /**
  * TagResultAdapter
  *
+ * <tag id="65443655-8558949624-88074" author="65448995@N05" raw="Photokina" machine_tag="0">photokina</tag>
+ *
  * @category   MphpFlickrPhotosGetInfo
  * @package    MphpFlickrPhotosGetInfo
  * @subpackage MphpFlickrPhotosGetInfo\Adapter\Xml\Result
@@ -34,7 +36,7 @@ class TagResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResult
      *
      * @var string
      */
-    protected $authorQuery;
+    protected $authorQuery = '//tag/@author';
 
     /**
      * The id value
@@ -48,7 +50,7 @@ class TagResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResult
      *
      * @var string
      */
-    protected $idQuery;
+    protected $idQuery = '//tag/@id';
 
     /**
      * The machine tag value
@@ -63,7 +65,7 @@ class TagResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResult
      *
      * @var string
      */
-    protected $machineTagQuery;
+    protected $machineTagQuery = '//tag/@machine_tag';
 
     /**
      * The raw tag value
@@ -77,7 +79,7 @@ class TagResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResult
      *
      * @var string
      */
-    protected $rawQuery;
+    protected $rawQuery = '//tag/@raw';
 
     /**
      * The actual textual value of the tag
@@ -92,7 +94,7 @@ class TagResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResult
      *
      * @var string
      */
-    protected $tagQuery;
+    protected $tagQuery = '//tag';
 
     /**
      * Return the author
@@ -122,7 +124,7 @@ class TagResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResult
 
     /**
      * Return the id value
-     * 
+     *
      * @return string|null
      */
     public function getId()
@@ -206,7 +208,7 @@ class TagResultAdapter extends \MphpFlickrBase\Adapter\Xml\Result\AbstractResult
     public function getTag()
     {
         if (! isset($this->tag)) {
-            $this->author = (($nodeList = $this->getDomXPath($this->getDomDocument())->query($this->getTagQuery())) && $nodeList->length)
+            $this->tag = (($nodeList = $this->getDomXPath($this->getDomDocument())->query($this->getTagQuery())) && $nodeList->length)
                 ? $nodeList->item(0)->nodeValue
                 : null;
         }
