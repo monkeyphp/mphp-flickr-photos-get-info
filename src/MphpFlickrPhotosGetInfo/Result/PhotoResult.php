@@ -391,13 +391,15 @@ class PhotoResult extends \MphpFlickrBase\Result\AbstractResult
     }
 
     /**
-     * Return notes of the Photo
+     * Return an instance of NotesResultSet
      *
-     * @return string|null
+     * @return \MphpFlickrPhotosGetInfo\ResultSet\NotesResultSet|null
      */
     public function getNotes()
     {
-        return $this->getAdapter()->getNotes();
+        return (null !== ($notesResultSetAdapter = $this->getAdapter()->getNotes()))
+            ? new \MphpFlickrPhotosGetInfo\ResultSet\NotesResultSet($notesResultSetAdapter)
+            : null;
     }
 
     /**
