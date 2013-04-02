@@ -30,11 +30,11 @@ class Connector extends \MphpFlickrBase\Connector\AbstractConnector
     protected $method = 'flickr.photos.getInfo';
 
     /**
-     * The name of the adapter class that a call to dispatch should return
+     * AdapterFactoryInterface instance classname
      *
      * @var string
      */
-    protected $resultAdapterClass = 'MphpFlickrPhotosGetInfo\Result\PhotoResult';
+    protected $adapterFactoryClassname = 'MphpFlickrPhotosGetInfo\Adapter\Factory\AdapterFactory';
 
     /**
      * The url parameter for photo id
@@ -62,7 +62,6 @@ class Connector extends \MphpFlickrBase\Connector\AbstractConnector
     protected function prepareParameters($parameters = array())
     {
         $parameters = parent::prepareParameters($parameters);
-
         // validate the photo_id value
         if (! array_key_exists($this->getArgumentPhotoId(), $parameters)) {
             throw new \MphpFlickrBase\Exception\MissingParameterException($this->getArgumentPhotoId() . ' parameter is required');
@@ -73,7 +72,7 @@ class Connector extends \MphpFlickrBase\Connector\AbstractConnector
 
         // validate secret
         // @todo
-
+        print_r($parameters);
         return $parameters;
     }
 

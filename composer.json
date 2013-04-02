@@ -20,7 +20,7 @@
     },
     "repositories":[
         {
-            "type": "package", 
+            "type": "package",
             "package": {
                 "name":"monkeyphp/mphp-flickr-base",
                 "version":"1.0.0",
@@ -28,9 +28,20 @@
                     "url": "https://github.com/monkeyphp/mphp-flickr-base",
                     "type": "git",
                     "reference": "master"
-                }, 
+                },
                 "autoload" : {
                     "psr-0": {"MphpFlickrBase": "src/"}
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name":"apigen/apigen",
+                "version": "2.8.0",
+                "dist": {
+                    "url": "https://github.com/downloads/apigen/apigen/ApiGen-2.8.0-standalone.zip",
+                    "type": "zip"
                 }
             }
         }
@@ -41,7 +52,10 @@
         "zendframework/zend-http": "2.1.2"
     },
     "require-dev": {
-        "phpunit/phpunit": "3.7.14"
+        "phpunit/phpunit": "3.7.14",
+        "apigen/apigen": "*",
+        "squizlabs/php_codesniffer": "1.4.4",
+        "ext-mbstring": "*"
     },
     "autoload": {
         "psr-0": {
