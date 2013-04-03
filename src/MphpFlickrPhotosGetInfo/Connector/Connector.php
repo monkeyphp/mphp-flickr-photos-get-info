@@ -75,7 +75,6 @@ class Connector extends \MphpFlickrBase\Connector\AbstractConnector
         return $parameters;
     }
 
-
     /**
      * Validate the supplied photo id value
      *
@@ -87,4 +86,5 @@ class Connector extends \MphpFlickrBase\Connector\AbstractConnector
     {
         return (is_string($value));
     }
+    
 }
