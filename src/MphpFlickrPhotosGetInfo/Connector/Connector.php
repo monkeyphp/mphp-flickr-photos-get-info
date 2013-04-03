@@ -72,7 +72,6 @@ class Connector extends \MphpFlickrBase\Connector\AbstractConnector
 
         // validate secret
         // @todo
-        print_r($parameters);
         return $parameters;
     }
 
